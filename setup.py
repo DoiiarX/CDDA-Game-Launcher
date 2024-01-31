@@ -21,6 +21,9 @@ from distutils.core import setup
 from os import scandir
 from subprocess import call, check_output, CalledProcessError, DEVNULL
 
+os.environ["PYTHONUTF8"] = "1"
+os.environ["PYTHONIOENCODING"]="utf8"
+
 try:
     import txclib.commands
     import txclib.utils
@@ -43,7 +46,7 @@ def get_setup_dir():
 
 
 def get_version():
-    with open(get_setup_dir() / 'cddagl' / 'VERSION') as version_file:
+    with open(get_setup_dir() / 'cddagl' / 'VERSION', encoding='utf-8') as version_file:
         return version_file.read().strip()
 
 
@@ -197,7 +200,7 @@ class Bundle(ExtendedCommand):
         
         # Create batch file for starting the launcher easily
         batch_file_path = archive_dir_path.joinpath('Launcher.bat')
-        with open(batch_file_path, 'w', encoding='utf8') as batch_file:
+        with open(batch_file_path, 'w', encoding='utf-8') as batch_file:
             batch_file.write(
                 '''
                 @echo off

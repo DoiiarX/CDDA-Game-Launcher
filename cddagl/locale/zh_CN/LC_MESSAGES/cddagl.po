@@ -1,0 +1,1542 @@
+# Chinese translations for cddagl.
+# Copyright (C) 2019 ORGANIZATION
+# This file is distributed under the same license as the cddagl project.
+#
+# SPDX-License-Identifier: MIT
+# This file is distributed under the same license as the cddagl project.
+# FIRST AUTHOR <doiiars@qq\.com>, 2019.
+# 
+# Translators:
+# Doiiars <doiiars@qq.com>, 2019
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cddagl 1.4.3\n"
+"Report-Msgid-Bugs-To: doiiars@qq.com\n"
+"POT-Creation-Date: 2019-09-04 12:48-0400\n"
+"PO-Revision-Date: 2022-01-26 22:37+0800\n"
+"Last-Translator: Doiiars <doiiars@qq.com>\n"
+"Language: zh\n"
+"Language-Team: zh <doiiars@qq.com>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: cddagl/functions.py:22 cddagl/launcher.py:121
+msgid ""
+"Global error:\n"
+"Launcher version: {version}\n"
+"Type: {extype}\n"
+"Value: {value}\n"
+"Traceback:\n"
+"{traceback}"
+msgstr ""
+"全局错误：\n"
+"启动器版本：{version}\n"
+"类型：{extype}\n"
+"值：{value}\n"
+"追踪回溯：\n"
+"{traceback}"
+
+
+#: cddagl/functions.py:69 cddagl/ui/views/main.py:1300
+msgid "64-bit"
+msgstr "64-bit"
+
+#: cddagl/functions.py:71 cddagl/ui/views/main.py:1301
+msgid "32-bit"
+msgstr "32-bit"
+
+#: cddagl/functions.py:75
+msgid "B"
+msgstr "B"
+
+#: cddagl/functions.py:76
+msgid "Ki"
+msgstr "Ki"
+
+#: cddagl/functions.py:76
+msgid "Mi"
+msgstr "Mi"
+
+#: cddagl/functions.py:76
+msgid "Gi"
+msgstr "Gi"
+
+#: cddagl/functions.py:76
+msgid "Ti"
+msgstr "Ti"
+
+#: cddagl/functions.py:76
+msgid "Pi"
+msgstr "Pi"
+
+#: cddagl/functions.py:76
+msgid "Ei"
+msgstr "Ei"
+
+#: cddagl/functions.py:77
+msgid "Zi"
+msgstr "Zi"
+
+#: cddagl/functions.py:81
+msgid "Yi"
+msgstr "Yi"
+
+#: cddagl/launcher.py:111
+msgid "CDDA Game Launcher started: {version}"
+msgstr "CDDA游戏启动器启动:{version}"
+
+#: cddagl/ui/views/backups.py:188
+msgid "Backups available"
+msgstr "当前备份"
+
+#: cddagl/ui/views/backups.py:189
+msgid "Manual backup"
+msgstr "手动备份"
+
+#: cddagl/ui/views/backups.py:190
+msgid "Automatic backups"
+msgstr "自动备份"
+
+#: cddagl/ui/views/backups.py:192 cddagl/ui/views/backups.py:316
+#: cddagl/ui/views/backups.py:345 cddagl/ui/views/backups.py:633
+msgid "Restore backup"
+msgstr "恢复备份"
+
+#: cddagl/ui/views/backups.py:193
+msgid "Refresh list"
+msgstr "刷新列表"
+
+#: cddagl/ui/views/backups.py:194 cddagl/ui/views/backups.py:653
+msgid "Delete backup"
+msgstr "删除备份"
+
+#: cddagl/ui/views/backups.py:195
+msgid "Do not backup the current saves before restoring a backup"
+msgstr "在恢复一个备份之前不备份当前存档"
+
+#: cddagl/ui/views/backups.py:197
+msgid "Name"
+msgstr "名称"
+
+#: cddagl/ui/views/backups.py:198
+msgid "Modified"
+msgstr "修改于"
+
+#: cddagl/ui/views/backups.py:198
+msgid "Worlds"
+msgstr "世界"
+
+#: cddagl/ui/views/backups.py:198
+msgid "Characters"
+msgstr "人物"
+
+#: cddagl/ui/views/backups.py:198
+msgid "Actual size"
+msgstr "实际尺寸"
+
+#: cddagl/ui/views/backups.py:199
+msgid "Compressed size"
+msgstr "压缩的大小"
+
+#: cddagl/ui/views/backups.py:199
+msgid "Compression ratio"
+msgstr "压缩率"
+
+#: cddagl/ui/views/backups.py:199
+msgid "Modified date"
+msgstr "修改日期"
+
+#: cddagl/ui/views/backups.py:201 cddagl/ui/views/mods.py:252
+#: cddagl/ui/views/soundpacks.py:215
+msgid "Name:"
+msgstr "名称:"
+
+#: cddagl/ui/views/backups.py:202 cddagl/ui/views/backups.py:1073
+msgid "Backup current saves"
+msgstr "备份当前存档"
+
+#: cddagl/ui/views/backups.py:204
+msgid "Backup saves before game launch"
+msgstr "在游戏启动前备份存档"
+
+#: cddagl/ui/views/backups.py:205
+msgid "Backup saves after game end"
+msgstr "在游戏结束后备份存档"
+
+#: cddagl/ui/views/backups.py:207
+msgid ""
+"This option will only work if you also have the option to keep the "
+"launcher opened after launching the game in the settings tab."
+msgstr "此选项只会在设置选项卡中启用了游戏启动后保持启动器开启的选项时才有效。"
+
+#: cddagl/ui/views/backups.py:211
+msgid "Maximum automatic backups count:"
+msgstr "最大的自动备份数:"
+
+#: cddagl/ui/views/backups.py:314 cddagl/ui/views/backups.py:343
+#: cddagl/ui/views/backups.py:375
+msgid "Restore backup cancelled"
+msgstr "恢复备份取消"
+
+#: cddagl/ui/views/backups.py:399
+msgid "before_last_restore"
+msgstr "上次恢复之前"
+
+#: cddagl/ui/views/backups.py:441 cddagl/ui/views/backups.py:532
+msgid "Cancel restore backup"
+msgstr "取消恢复备份"
+
+#: cddagl/ui/views/backups.py:473
+msgid "Could not rename the save directory"
+msgstr "无法重命名保存目录"
+
+#: cddagl/ui/views/backups.py:478
+msgid "Could not remove the save file"
+msgstr "不能删除存档文件"
+
+#: cddagl/ui/views/backups.py:493
+msgid "Extracting backup"
+msgstr "提取备份"
+
+#: cddagl/ui/views/backups.py:498 cddagl/ui/views/backups.py:595
+#: cddagl/ui/views/backups.py:929 cddagl/ui/views/backups.py:1035
+#: cddagl/ui/views/main.py:2553 cddagl/ui/views/main.py:3442
+#: cddagl/ui/views/main.py:3530 cddagl/ui/views/mods.py:775
+#: cddagl/ui/views/soundpacks.py:700 cddagl/ui/views/tabbed.py:602
+msgid "{bytes_sec}/s"
+msgstr "{bytes_sec}/s"
+
+#: cddagl/ui/views/backups.py:555
+msgid "Extracting {filename}"
+msgstr "提取{filename}"
+
+#: cddagl/ui/views/backups.py:576
+msgid "{backup_name} backup restored"
+msgstr "{backup_name}备份恢复"
+
+#: cddagl/ui/views/backups.py:654
+msgid "This will delete the backup file. It cannot be undone."
+msgstr "这将删除备份文件。操作无法完成。"
+
+#: cddagl/ui/views/backups.py:656
+msgid "Are you sure you want to delete the <strong>{filename}</strong> backup?"
+msgstr "你确定你要删除<strong>{filename}</strong>备份?"
+
+#: cddagl/ui/views/backups.py:659
+msgid "Delete the backup"
+msgstr "删除备份"
+
+#: cddagl/ui/views/backups.py:661
+msgid "I want to keep the backup"
+msgstr "我想保留这个备份"
+
+#: cddagl/ui/views/backups.py:670
+msgid "Backup deletion cancelled"
+msgstr "删除操作取消"
+
+#: cddagl/ui/views/backups.py:675
+msgid "Backup deleted"
+msgstr "备份删除完毕"
+
+#: cddagl/ui/views/backups.py:690 cddagl/ui/views/backups.py:732
+msgid "Manual backup cancelled"
+msgstr "手动备份取消"
+
+#: cddagl/ui/views/backups.py:738
+msgid "manual_backup"
+msgstr "manual_backup"
+
+#: cddagl/ui/views/backups.py:749 cddagl/ui/views/main.py:378
+#: cddagl/ui/views/main.py:527 cddagl/ui/views/main.py:906
+msgid "auto"
+msgstr "auto"
+
+#: cddagl/ui/views/backups.py:785
+msgid "Save directory not found"
+msgstr "保存目录未找到"
+
+#: cddagl/ui/views/backups.py:804
+msgid "Could not delete previous backup archive"
+msgstr "不能删除以前的备份存档"
+
+#: cddagl/ui/views/backups.py:893
+msgid "Cancel backup"
+msgstr "取消备份"
+
+#: cddagl/ui/views/backups.py:896
+msgid "Searching for save files"
+msgstr "寻找存档文件"
+
+#: cddagl/ui/views/backups.py:907
+msgid "Found {filename} in {path}"
+msgstr "发现 {filename}在{path}"
+
+#: cddagl/ui/views/backups.py:926
+msgid "Compressing save files"
+msgstr "压缩存档文件"
+
+#: cddagl/ui/views/backups.py:993
+msgid "Compressing {filename}"
+msgstr "压缩{filename}"
+
+#: cddagl/ui/views/backups.py:1015
+msgid "Saves backup completed"
+msgstr "保存备份完成"
+
+#: cddagl/ui/views/backups.py:1279
+msgid "Cannot rename file"
+msgstr "无法重命名文件"
+
+#: cddagl/ui/views/backups.py:1285
+msgid ""
+"\n"
+"<p>The launcher failed to rename the following file: {src} to {dst}</p>\n"
+"<p>When trying to rename or access {filename}, the launcher raised the\n"
+"following error: {error}</p>\n"
+msgstr ""
+"\n"
+"<p>启动器无法将以下文件从 {src} 重命名为 {dst}</p>\n"
+"<p>尝试重命名或访问 {filename} 时，启动器出现了以下错误：{error}</p>\n"
+
+#: cddagl/ui/views/backups.py:1296
+msgid ""
+"\n"
+"<p>No process seems to be using that file.</p>\n"
+msgstr ""
+"\n"
+"<p>似乎没有进程正在使用该文件。</p>\n"
+
+#: cddagl/ui/views/backups.py:1300
+msgid ""
+"\n"
+"<p>The process <strong>{image_file_name} ({pid})</strong> is currently "
+"using\n"
+"that file. You might need to end it if you want to retry.</p>\n"
+msgstr ""
+"\n"
+"<p>进程 <strong>{image_file_name} ({pid})</strong> 当前正在使用\n"
+"该文件。如果您想重试，可能需要结束该进程。</p>\n"
+
+#: cddagl/ui/views/backups.py:1306
+msgid "Do you want to retry renaming this file?"
+msgstr "您想要重试重命名这个文件吗？"
+
+#: cddagl/ui/views/backups.py:1308
+msgid "Retry renaming the file"
+msgstr "重试重命名文件"
+
+#: cddagl/ui/views/backups.py:1310 cddagl/ui/views/main.py:3250
+#: cddagl/ui/views/main.py:3312
+msgid "Cancel the operation"
+msgstr "取消操作"
+
+#: cddagl/ui/views/dialogs.py:37
+msgid ""
+"This {name} cannot be directly downloaded by the launcher. You have to "
+"use your browser to download it."
+msgstr "这个 {name} 无法通过启动器直接下载。您需要使用浏览器来下载它。"
+
+#: cddagl/ui/views/dialogs.py:44
+msgid "1. Open the URL in your browser."
+msgstr "1. 在浏览器中打开URL。"
+
+#: cddagl/ui/views/dialogs.py:59
+msgid "2. Download the {name} on that page and wait for the download to complete."
+msgstr "2. 在该页面下载 {name} 并等待下载完成。"
+
+#: cddagl/ui/views/dialogs.py:65
+msgid "3. Select the downloaded archive."
+msgstr "3. 选择已下载的存档。"
+
+#: cddagl/ui/views/dialogs.py:90
+msgid "Install this {name}"
+msgstr "安装{name}"
+
+#: cddagl/ui/views/dialogs.py:96
+msgid "Do not install"
+msgstr "不要安装"
+
+#: cddagl/ui/views/dialogs.py:107
+msgid "Browser download"
+msgstr "浏览器下载"
+
+#: cddagl/ui/views/dialogs.py:112
+msgid "Downloaded archive"
+msgstr "下载archive完成"
+
+#: cddagl/ui/views/dialogs.py:113
+msgid "Archive files {formats}"
+msgstr "Archive文件 {formats}"
+
+#: cddagl/ui/views/dialogs.py:122
+msgid "File not found"
+msgstr "文件未找到"
+
+#: cddagl/ui/views/dialogs.py:124
+msgid ""
+"{filepath} is not an existing file on your system. Make sure to download "
+"the archive with your browser. Make sure to select the downloaded archive"
+" afterwards."
+msgstr ""
+
+#: cddagl/ui/views/dialogs.py:131
+msgid "I will try again"
+msgstr "我将再试一次"
+
+#: cddagl/ui/views/dialogs.py:172
+msgid "About CDDA Game Launcher"
+msgstr "关于CDDA游戏启动器"
+
+#: cddagl/ui/views/dialogs.py:173 cddagl/ui/views/main.py:429
+#: cddagl/ui/views/main.py:2094
+msgid "OK"
+msgstr "OK"
+
+#: cddagl/ui/views/dialogs.py:174
+msgid "<p>CDDA Game Launcher version {version}</p>"
+msgstr ""
+
+#: cddagl/ui/views/dialogs.py:175
+msgid ""
+"<p>Get the latest release <a href=\"https://github.com/remyroy/CDDA-Game-"
+"Launcher/releases\">on GitHub</a>.</p>"
+msgstr ""
+
+#: cddagl/ui/views/dialogs.py:178
+msgid ""
+msgstr ""
+
+#: cddagl/ui/views/dialogs.py:185
+msgid ""
+"<p>If you like the CDDA Game Launcher, you can buy me a beer "
+"by:</p><p>donating bitcoins to <a "
+"href=\"{bitcoin_link}\">{bitcoin_text}</a></p><p><img src=\"btc-qr.png\" "
+"/></p><p>or by donating ethers to <a "
+"href=\"{ether_link}\">{ether_text}</a></p><p><img src=\"eth-qr.png\" "
+"/></p>"
+msgstr ""
+
+#: cddagl/ui/views/dialogs.py:193
+msgid ""
+"<p>Thanks to the following people for their efforts in translating the "
+"CDDA Game Launcher</p><ul><li>Russian: Daniel from <a "
+"href=\"http://cataclysmdda.ru/\">cataclysmdda.ru</a> and "
+"Night_Pryanik</li><li>Italian: Rettiliano Verace from <a "
+"href=\"http://emigrantebestemmiante.blogspot.com\">Emigrante "
+"Bestemmiante</a></li><li>French: R茅my Roy</li><li>Spanish: "
+"KurzedMetal</li></ul>"
+msgstr ""
+
+#: cddagl/ui/views/dialogs.py:205
+msgid ""
+"<p>Thanks to <a href=\"http://mattahan.deviantart.com/\">Paul Davey aka "
+"Mattahan</a> for the permission to use his artwork for the launcher "
+"icon.</p>"
+msgstr ""
+
+#: cddagl/ui/views/dialogs.py:207
+msgid ""
+"<p>This software is distributed under the MIT License. That means this is"
+" 100&#37; free software, completely free to use, modify and/or "
+"distribute. If you like more details check the following boring legal "
+"stuff...</p>"
+msgstr ""
+
+#: cddagl/ui/views/dialogs.py:238
+msgid ""
+"The CDDA Game Launcher just crashed. An unhandled exception was raised. "
+"Here are the details."
+msgstr "CDDA游戏启动器就崩溃了。"
+
+#: cddagl/ui/views/dialogs.py:250
+msgid ""
+"\n"
+"<p>CDDA Game Launcher version: {version}</p>\n"
+"<p>OS: {os} ({bitness})</p>\n"
+"<p>Type: {extype}</p>\n"
+"<p>Value: {value}</p>\n"
+"<p>Traceback:</p>\n"
+"<code>{traceback}</code>\n"
+msgstr ""
+
+#: cddagl/ui/views/dialogs.py:265
+msgid "Unhandled exception: [Enter a title]"
+msgstr "未处理的异常:[Enter a title]"
+
+#: cddagl/ui/views/dialogs.py:266
+msgid ""
+"* Description: [Enter what you did and what happened]\n"
+"* Version: {version}\n"
+"* OS: {os} ({bitness})\n"
+"* Type: `{extype}`\n"
+"* Value: {value}\n"
+"* Traceback:\n"
+"```\n"
+"{traceback}\n"
+"```\n"
+msgstr ""
+
+#: cddagl/ui/views/dialogs.py:281
+msgid ""
+"Please help us make a better launcher <a href=\"{url}\">by reporting this"
+" issue on GitHub</a>."
+msgstr ""
+
+#: cddagl/ui/views/dialogs.py:288
+msgid "Exit"
+msgstr "退出"
+
+#: cddagl/ui/views/dialogs.py:294
+msgid "Something went wrong"
+msgstr "发生了一点错误"
+
+#: cddagl/ui/views/main.py:159 cddagl/ui/views/main.py:169
+#: cddagl/ui/views/main.py:677 cddagl/ui/views/main.py:678
+#: cddagl/ui/views/main.py:768 cddagl/ui/views/main.py:810
+#: cddagl/ui/views/main.py:940 cddagl/ui/views/main.py:1049
+#: cddagl/ui/views/main.py:1139 cddagl/ui/views/main.py:1248
+#: cddagl/ui/views/main.py:2671 cddagl/ui/views/main.py:2769
+#: cddagl/ui/views/main.py:2867 cddagl/ui/views/mods.py:1050
+#: cddagl/ui/views/mods.py:1092 cddagl/ui/views/mods.py:1129
+#: cddagl/ui/views/mods.py:1165 cddagl/ui/views/soundpacks.py:1013
+#: cddagl/ui/views/soundpacks.py:1049
+msgid "Unknown"
+msgstr "未知"
+
+#: cddagl/ui/views/main.py:206
+msgid "Directory"
+msgstr "目录"
+
+#: cddagl/ui/views/main.py:207 cddagl/ui/views/mods.py:266
+msgid "Version"
+msgstr "版本"
+
+#: cddagl/ui/views/main.py:208
+msgid "Build"
+msgstr "Build"
+
+#: cddagl/ui/views/main.py:209
+msgid "Saves"
+msgstr "存档:"
+
+#: cddagl/ui/views/main.py:211
+msgid ""
+"Your save directory might be large enough to cause significant delays "
+"during the update process.\n"
+"You might want to enable the \"Do not copy or move the save directory\" "
+"option in the settings tab."
+msgstr "您的存档目录可能足够大，以至于在更新过程中造成显著的延迟。\n"
+"您可能想要在设置选项卡中启用“不复制或移动存档目录”的选项。"
+
+#: cddagl/ui/views/main.py:215 cddagl/ui/views/main.py:518
+#: cddagl/ui/views/main.py:897
+msgid "Launch game"
+msgstr "启动游戏"
+
+#: cddagl/ui/views/main.py:216
+msgid "Restore previous version"
+msgstr "恢复以前的版本"
+
+#: cddagl/ui/views/main.py:217
+msgid "Game"
+msgstr "游戏"
+
+#: cddagl/ui/views/main.py:379
+msgid "before_launch"
+msgstr "启动前"
+
+#: cddagl/ui/views/main.py:391
+msgid "Game executable not found"
+msgstr "游戏可执行文件没有找到"
+
+#: cddagl/ui/views/main.py:413
+msgid "Could not launch the game executable"
+msgstr "无法启动游戏的可执行文件"
+
+#: cddagl/ui/views/main.py:416
+msgid "Cannot launch game"
+msgstr "无法启动游戏"
+
+#: cddagl/ui/views/main.py:418
+msgid ""
+"\n"
+"<p>The launcher failed to start the game executable in "
+"<strong>{filename}</strong> .</p>\n"
+"<p>It received the following error from the operating system: {error}</p>"
+"\n"
+"<p>Poor antivirus products are known to detect the game binary as a "
+"threat and\n"
+"block its execution. A simple workaround is to add the game binary in "
+"your\n"
+"antivirus whitelist or select the action to trust this binary when "
+"detected.</p>\n"
+msgstr "\n"
+"<p>启动器无法在 <strong>{filename}</strong> 中启动游戏可执行文件。</p>\n"
+"<p>它从操作系统收到了以下错误：{error}</p>\n"
+"<p>一些不佳的杀毒软件可能会将游戏二进制文件识别为威胁并阻止其运行。一个简单的解决办法是将游戏二进制文件添加到您的杀毒软件白名单中，或在检测到时选择信任此文件。</p>\n"
+
+#: cddagl/ui/views/main.py:425
+msgid "[unknown]"
+msgstr "[未知]"
+
+#: cddagl/ui/views/main.py:444 cddagl/ui/views/main.py:757
+#: cddagl/ui/views/main.py:845 cddagl/ui/views/main.py:2656
+#: cddagl/ui/views/main.py:2952
+msgid "Game process is running"
+msgstr "游戏已启动"
+
+#: cddagl/ui/views/main.py:462 cddagl/ui/views/main.py:863
+msgid "Show current game"
+msgstr "显示当前游戏"
+
+#: cddagl/ui/views/main.py:500 cddagl/ui/views/main.py:887
+msgid "Game process has ended"
+msgstr "游戏已结束"
+
+#: cddagl/ui/views/main.py:528 cddagl/ui/views/main.py:907
+msgid "after_end"
+msgstr "after_end"
+
+#: cddagl/ui/views/main.py:586
+msgid "Game directory"
+msgstr "游戏目录"
+
+#: cddagl/ui/views/main.py:613 cddagl/ui/views/main.py:620
+#: cddagl/ui/views/main.py:627 cddagl/ui/views/main.py:652
+msgid "Unknown version - Reason"
+msgstr "未知的版本 - 原因:"
+
+#: cddagl/ui/views/main.py:614
+msgid "CDDA Game Launcher files cannot be inside Game directory!"
+msgstr "CDDA游戏启动文件不能在游戏目录!"
+
+#: cddagl/ui/views/main.py:621
+msgid "Game directory was set to a file!"
+msgstr "游戏目录被设置为一个文件!"
+
+#: cddagl/ui/views/main.py:628
+msgid "Game directory doesn't exist, Game is not installed here."
+msgstr "游戏目录不存在,这里没有安装游戏。"
+
+#: cddagl/ui/views/main.py:642 cddagl/ui/views/main.py:1041
+msgid "console"
+msgstr "console"
+
+#: cddagl/ui/views/main.py:645 cddagl/ui/views/main.py:1044
+msgid "tiles"
+msgstr "tiles"
+
+#: cddagl/ui/views/main.py:653
+msgid "Game is not installed in this directory."
+msgstr "游戏并没有安装在这个目录。"
+
+#: cddagl/ui/views/main.py:660 cddagl/ui/views/main.py:661
+#: cddagl/ui/views/main.py:662
+msgid "Analyzing..."
+msgstr "分析:…"
+
+#: cddagl/ui/views/main.py:671 cddagl/ui/views/main.py:2529
+#: cddagl/ui/views/main.py:2812 cddagl/ui/views/main.py:2884
+msgid "Install game"
+msgstr "安装游戏"
+
+#: cddagl/ui/views/main.py:684 cddagl/ui/views/main.py:1305
+#: cddagl/ui/views/main.py:2527 cddagl/ui/views/main.py:2795
+#: cddagl/ui/views/main.py:2882
+msgid "Update game"
+msgstr "更新游戏"
+
+#: cddagl/ui/views/main.py:716 cddagl/ui/views/main.py:1088
+msgid "Reading: {0}"
+msgstr "Reading: {0}"
+
+#: cddagl/ui/views/main.py:752
+msgid "Previous version restored"
+msgstr "旧版本恢复"
+
+#: cddagl/ui/views/main.py:754 cddagl/ui/views/main.py:2651
+#: cddagl/ui/views/main.py:2949 cddagl/ui/views/tabbed.py:85
+msgid "Ready"
+msgstr "准备就绪"
+
+#: cddagl/ui/views/main.py:804 cddagl/ui/views/main.py:2499
+#: cddagl/ui/views/main.py:2807
+msgid "Your game is up to date"
+msgstr "你的游戏是最新的"
+
+#: cddagl/ui/views/main.py:806 cddagl/ui/views/main.py:2501
+#: cddagl/ui/views/main.py:2809
+msgid "There is a new update available"
+msgstr "有一个新的更新可用"
+
+#: cddagl/ui/views/main.py:949 cddagl/ui/views/main.py:987
+#: cddagl/ui/views/main.py:1014
+msgid "World"
+msgid_plural "Worlds"
+msgstr "世界"
+
+#: cddagl/ui/views/main.py:950 cddagl/ui/views/main.py:988
+#: cddagl/ui/views/main.py:1015
+msgid "Character"
+msgid_plural "Characters"
+msgstr "角色"
+
+#: cddagl/ui/views/main.py:1048
+msgid "Not a CDDA directory"
+msgstr "不是一个CDDA目录"
+
+#: cddagl/ui/views/main.py:1060
+msgid ""
+"No executable found in the downloaded archive. You might want to restore "
+"your previous version."
+msgstr "没有可执行下载的archive中找到。"
+
+#: cddagl/ui/views/main.py:1296
+msgid "Branch"
+msgstr "Branch:"
+
+#: cddagl/ui/views/main.py:1297
+msgid "Stable"
+msgstr "稳定版"
+
+#: cddagl/ui/views/main.py:1298
+msgid "Experimental"
+msgstr "实验版"
+
+#: cddagl/ui/views/main.py:1299
+msgid "Platform"
+msgstr "平台"
+
+#: cddagl/ui/views/main.py:1300 cddagl/ui/views/main.py:3023
+msgid "Windows x64"
+msgstr "Windows x64"
+
+#: cddagl/ui/views/main.py:1301 cddagl/ui/views/main.py:3022
+msgid "Windows x86"
+msgstr "Windows x86"
+
+#: cddagl/ui/views/main.py:1302
+msgid "Available builds"
+msgstr "可用的版本"
+
+#: cddagl/ui/views/main.py:1303
+msgid "Refresh"
+msgstr "刷新"
+
+#: cddagl/ui/views/main.py:1304
+msgid "Changelog"
+msgstr "更新日志"
+
+#: cddagl/ui/views/main.py:1306 cddagl/ui/views/settings.py:391
+msgid "Update/Installation"
+msgstr "更新/安装"
+
+#: cddagl/ui/views/main.py:1349
+msgid "Cannot update or install the game since no build was found"
+msgstr "不能更新或安装游戏因为没有build被发现"
+
+#: cddagl/ui/views/main.py:1380
+msgid "Install directory is not empty"
+msgstr "安装目录非空"
+
+#: cddagl/ui/views/main.py:1381
+msgid ""
+"You cannot install the game in a directory that is not empty. We can "
+"quickly proceed with a new subdirectory."
+msgstr ""
+
+#: cddagl/ui/views/main.py:1384
+msgid "Can we create a new empty subdirectory to proceed?"
+msgstr "我们可以创建一个新的空目录继续吗?"
+
+#: cddagl/ui/views/main.py:1386
+msgid "Create the {name} subdirectory and proceed"
+msgstr "创建 {name}子目录并进行"
+
+#: cddagl/ui/views/main.py:1389
+msgid "I will choose or create a different directory"
+msgstr "我将选择或创建一个不同的目录"
+
+#: cddagl/ui/views/main.py:1423
+msgid "Game is up to date"
+msgstr "游戏更新完成"
+
+#: cddagl/ui/views/main.py:1424
+msgid "You already have the latest version."
+msgstr "你已经是最新版本。"
+
+#: cddagl/ui/views/main.py:1426
+msgid "Are you sure you want to update your game?"
+msgstr "你确定你想更新你的游戏吗?"
+
+#: cddagl/ui/views/main.py:1428
+msgid "Update the game again"
+msgstr "再次更新游戏"
+
+#: cddagl/ui/views/main.py:1430
+msgid "I do not need to update the game again"
+msgstr "我不需要再次更新游戏"
+
+#: cddagl/ui/views/main.py:1458
+msgid "Cannot install game on a file"
+msgstr "无法安装游戏文件"
+
+#: cddagl/ui/views/main.py:1498 cddagl/ui/views/main.py:1520
+#: cddagl/ui/views/main.py:1550 cddagl/ui/views/main.py:1575
+#: cddagl/ui/views/main.py:1598
+msgid "Update cancelled"
+msgstr "更新取消"
+
+#: cddagl/ui/views/main.py:1501 cddagl/ui/views/main.py:1523
+#: cddagl/ui/views/main.py:1553 cddagl/ui/views/main.py:1578
+#: cddagl/ui/views/main.py:1601
+msgid "Installation cancelled"
+msgstr "安装取消"
+
+#: cddagl/ui/views/main.py:1706 cddagl/ui/views/main.py:1771
+#: cddagl/ui/views/mods.py:421 cddagl/ui/views/mods.py:608
+#: cddagl/ui/views/soundpacks.py:372 cddagl/ui/views/soundpacks.py:567
+msgid "Downloading: {0}"
+msgstr "下载:{0}"
+
+#: cddagl/ui/views/main.py:1742 cddagl/ui/views/tabbed.py:505
+msgid "Cancel update"
+msgstr "取消更新"
+
+#: cddagl/ui/views/main.py:1744
+msgid "Cancel installation"
+msgstr "取消安装"
+
+#: cddagl/ui/views/main.py:1810 cddagl/ui/views/mods.py:493
+#: cddagl/ui/views/mods.py:656 cddagl/ui/views/soundpacks.py:440
+#: cddagl/ui/views/soundpacks.py:603
+msgid "Testing downloaded file archive"
+msgstr "测试下载文件存档"
+
+#: cddagl/ui/views/main.py:1847 cddagl/ui/views/mods.py:530
+#: cddagl/ui/views/mods.py:701 cddagl/ui/views/soundpacks.py:487
+#: cddagl/ui/views/soundpacks.py:649
+msgid "Downloaded archive is invalid"
+msgstr "下载档案是无效的"
+
+#: cddagl/ui/views/main.py:1857
+msgid "Could not download game"
+msgstr "不能下载游戏"
+
+#: cddagl/ui/views/main.py:1885
+msgid "Deleting {name}"
+msgstr "删除{name}"
+
+#: cddagl/ui/views/main.py:1886 cddagl/ui/views/main.py:1892
+#: cddagl/ui/views/main.py:2465
+msgid "previous_version directory"
+msgstr "previous_version目录"
+
+#: cddagl/ui/views/main.py:1891
+msgid "Update cancelled - Could not delete the {name}."
+msgstr "更新取消,不能删除 {name}。"
+
+#: cddagl/ui/views/main.py:1930
+msgid "Backing up current game"
+msgstr "备份当前的游戏"
+
+#: cddagl/ui/views/main.py:1974
+msgid "Backing up {0}"
+msgstr "备份{0}"
+
+#: cddagl/ui/views/main.py:1993
+msgid "Could not move {srcpath} in {dstpath} ."
+msgstr "不能移动{dstpath}的{srcpath}。"
+
+#: cddagl/ui/views/main.py:2076 cddagl/ui/views/mods.py:858
+#: cddagl/ui/views/soundpacks.py:783
+msgid "Extracting {0}"
+msgstr "解压 {0}"
+
+#: cddagl/ui/views/main.py:2086
+msgid "Cannot extract game archive"
+msgstr "无法提取游戏存档"
+
+#: cddagl/ui/views/main.py:2088
+msgid ""
+"\n"
+"<p>The launcher failed to extract the game archive.</p>\n"
+"<p>It received the following error from the operating system: {error}</p>"
+msgstr ""
+"\n"
+"<p>启动器无法提取游戏存档。</p>\n"
+"<p>它从操作系统收到了以下错误：{error}</p>"
+
+#: cddagl/ui/views/main.py:2165
+msgid "{0} directory"
+msgstr "{0}目录"
+
+#: cddagl/ui/views/main.py:2222
+msgid "Restoring custom tilesets"
+msgstr "恢复自定义贴图包
+
+#: cddagl/ui/views/main.py:2265
+msgid "Restoring custom soundpacks"
+msgstr "恢复自定义音效包"
+
+#: cddagl/ui/views/main.py:2314
+msgid "{name} soundpack"
+msgstr "{name} 音效包"
+
+#: cddagl/ui/views/main.py:2344
+msgid "Restoring custom mods"
+msgstr "恢复自定义插件"
+
+#: cddagl/ui/views/main.py:2379
+msgid "Restoring user custom mods"
+msgstr "恢复用户自定义插件"
+
+#: cddagl/ui/views/main.py:2417
+msgid "Restoring {0}"
+msgstr "恢复{0}"
+
+#: cddagl/ui/views/main.py:2431
+msgid "Restoring custom fonts"
+msgstr "恢复自定义字体"
+
+#: cddagl/ui/views/main.py:2486
+msgid "Update completed"
+msgstr "更新完成"
+
+#: cddagl/ui/views/main.py:2488
+msgid "Installation completed"
+msgstr "安装完成"
+
+#: cddagl/ui/views/main.py:2571
+msgid "Fetching remote builds"
+msgstr "获取远程build"
+
+#: cddagl/ui/views/main.py:2577 cddagl/ui/views/main.py:2619
+msgid "Fetching: {url}"
+msgstr "抓取:{url}"
+
+#: cddagl/ui/views/main.py:2678
+msgid ""
+"You have {remaining} request(s) remaining for accessing GitHub API.\n"
+"You will have to wait until {datetime} to get more requests.\n"
+"Those requests are needed to get the available builds.\n"
+"If you keep running low on those remaining requests, avoid quickly "
+"refreshing often\n"
+" for the available builds. For more information, search GitHub API rate "
+"limiting."
+msgstr ""
+"您还剩下 {remaining} 次访问GitHub API的请求。\n"
+"您需要等到 {datetime} 才能获得更多请求。\n"
+"这些请求是获取可用构建所必需的。\n"
+"如果您频繁快速刷新而导致剩余请求次数不足，请避免这样做。\n"
+"有关更多信息，请搜索GitHub API速率限制。"
+
+#: cddagl/ui/views/main.py:2696 cddagl/ui/views/tabbed.py:166
+msgid ""
+"Could not find launcher latest release when requesting {url}. Error: "
+"{error}"
+msgstr ""
+"请求 {url} 时未能找到启动器的最新版本。错误：{error}"
+
+#: cddagl/ui/views/main.py:2782
+msgid " - build unavailable"
+msgstr " - build不可用"
+
+#: cddagl/ui/views/main.py:2787
+msgid " - latest build available"
+msgstr " - 最新可用的build"
+
+#: cddagl/ui/views/main.py:2818
+msgid "Could not find remote builds"
+msgstr "找不到远程build"
+
+#: cddagl/ui/views/main.py:2907
+msgid "<h3>Loading changelog...</h3>"
+msgstr "<h3>正在加载更新日志...</h3>"
+
+#: cddagl/ui/views/main.py:2912
+msgid "Fetching latest build changelogs"
+msgstr "正在获取最新build的更新日志"
+
+#: cddagl/ui/views/main.py:2955
+msgid "<h3>Parsing changelog...</h3>"
+msgstr "<h3>解析更新日志中...</h3>"
+
+#: cddagl/ui/views/main.py:3024
+msgid "All Platforms"
+msgstr "所有平台"
+
+#: cddagl/ui/views/main.py:3054
+msgid "Error parsing Changelog data. Retry later."
+msgstr "解析更新日志数据时出错。请稍后重试。"
+
+#: cddagl/ui/views/main.py:3087
+msgid "Build #{build_number}"
+msgstr "Build号 #{build_number}"
+
+#: cddagl/ui/views/main.py:3096
+msgid "build still in progress!"
+msgstr "build仍在进行中！"
+
+#: cddagl/ui/views/main.py:3110
+msgid "but build failed for"
+msgstr "但是build失败，原因是"
+
+#: cddagl/ui/views/main.py:3121
+msgid "No changes, same code as previous build!"
+msgstr "无变更，代码与之前的build相同！"
+
+#: cddagl/ui/views/main.py:3140 cddagl/ui/views/main.py:3377
+#, python-format
+msgid "Source path '%s' is not a directory"
+msgstr "源路径 '%s' 不是一个目录"
+
+#: cddagl/ui/views/main.py:3171 cddagl/ui/views/main.py:3420
+msgid "file"
+msgid_plural "files"
+msgstr "文件"
+msgstr_plural "文件"
+
+#: cddagl/ui/views/main.py:3173
+msgid "Analysing {name} - Found {file_count} {files}"
+msgstr "正在分析 {name} - 发现 {file_count} 个{files}"
+
+#: cddagl/ui/views/main.py:3218 cddagl/ui/views/main.py:3282
+msgid "Cannot remove directory"
+msgstr "无法删除目录"
+
+#: cddagl/ui/views/main.py:3225 cddagl/ui/views/main.py:3288
+msgid ""
+"\n"
+"<p>The launcher failed to remove the following directory: {directory}</p>"
+"\n"
+"<p>When trying to remove or access {filename}, the launcher raised the\n"
+"following error: {error}</p>"
+msgstr ""
+"\n"
+"<p>启动器无法删除以下目录：{directory}</p>"
+"\n"
+"<p>在尝试删除或访问 {filename} 时，启动器出现了以下错误：{error}</p>"
+
+#: cddagl/ui/views/main.py:3234 cddagl/ui/views/main.py:3297
+msgid ""
+"\n"
+"<p>No process seems to be using that file or directory.</p>"
+msgstr ""
+"\n"
+"<p>似乎没有进程正在使用该文件或目录。</p>"
+
+#: cddagl/ui/views/main.py:3237 cddagl/ui/views/main.py:3300
+msgid ""
+"\n"
+"<p>The process <strong>{image_file_name} ({pid})</strong> is currently "
+"using\n"
+"that file or directory. You might need to end it if you want to retry.</p>"
+msgstr ""
+"\n"
+"<p>进程 <strong>{image_file_name} ({pid})</strong> 目前正在使用\n"
+"该文件或目录。如果您想要重试，可能需要结束该进程。</p>"
+
+#: cddagl/ui/views/main.py:3245 cddagl/ui/views/main.py:3307
+msgid "Do you want to retry removing this directory?"
+msgstr "你想重试删除这个目录吗?"
+
+#: cddagl/ui/views/main.py:3248 cddagl/ui/views/main.py:3310
+msgid "Retry removing the directory"
+msgstr "重试删除目录"
+
+#: cddagl/ui/views/main.py:3329
+msgid "Deleting {name} - {entry}"
+msgstr "正在删除 {name} - {entry}"
+
+#: cddagl/ui/views/main.py:3339 cddagl/ui/views/main.py:3551
+msgid "Analysing {name}"
+msgstr "分析{name}"
+
+#: cddagl/ui/views/main.py:3379
+#, python-format
+msgid "Destination path '%s' already exists"
+msgstr "目的地路径'%s'已经存在"
+
+#: cddagl/ui/views/main.py:3423
+msgid "Analysing {name} - Found {file_count} {files} ({size})"
+msgstr "分析{name} - 发现{file_count}个{files}（{size}）"
+
+#: cddagl/ui/views/main.py:3541
+msgid "Copying {name} - {entry}"
+msgstr "复制中{name} - {entry}"
+
+#: cddagl/ui/views/mods.py:235 cddagl/ui/views/soundpacks.py:196
+msgid "Installed"
+msgstr "安装"
+
+#: cddagl/ui/views/mods.py:236 cddagl/ui/views/mods.py:981
+#: cddagl/ui/views/mods.py:1053 cddagl/ui/views/soundpacks.py:197
+#: cddagl/ui/views/soundpacks.py:896 cddagl/ui/views/soundpacks.py:952
+msgid "Disable"
+msgstr "禁用"
+
+#: cddagl/ui/views/mods.py:237 cddagl/ui/views/soundpacks.py:198
+msgid "Delete"
+msgstr "删除"
+
+#: cddagl/ui/views/mods.py:239
+msgid "Add this new mod to the repository"
+msgstr "将这个新模组添加到仓库中"
+
+#: cddagl/ui/views/mods.py:240
+msgid ""
+"* Name: [Enter the name of the mod]\n"
+"* Url: [Enter the Url where we can find the mod]\n"
+"* Author: [Enter the name of the author]\n"
+"* Homepage: [Enter the Url of the author website or where the mod was published]\n"
+"* Mod not found in version: {version}\n"
+msgstr ""
+"* 名称：[输入模组的名称]\n"
+"* 网址：[输入可找到模组的网址]\n"
+"* 作者：[输入作者的名称]\n"
+"* 主页：[输入作者网站的网址或模组发布的地方]\n"
+"* 在版本 {version} 中未找到模组\n"
+
+#: cddagl/ui/views/mods.py:247
+msgid "<a href=\"{url}\">Suggest a new mod on GitHub</a>"
+msgstr "<a href=\"{url}\">在GitHub上建议一个新的模组</a>"
+
+#: cddagl/ui/views/mods.py:249 cddagl/ui/views/soundpacks.py:199
+msgid "Repository"
+msgstr "存储库"
+
+#: cddagl/ui/views/mods.py:250 cddagl/ui/views/mods.py:723
+msgid "Install this mod"
+msgstr "安装这个mod"
+
+#: cddagl/ui/views/mods.py:251 cddagl/ui/views/soundpacks.py:213
+msgid "Details"
+msgstr "细节"
+
+#: cddagl/ui/views/mods.py:253
+msgid "Ident"
+msgstr "鉴别"
+
+#: cddagl/ui/views/mods.py:254
+msgid "Author:"
+msgstr "作者:"
+
+#: cddagl/ui/views/mods.py:255
+msgid "Description:"
+msgstr "描述:"
+
+#: cddagl/ui/views/mods.py:256
+msgid "Category:"
+msgstr "类别:"
+
+#: cddagl/ui/views/mods.py:260 cddagl/ui/views/mods.py:1095
+#: cddagl/ui/views/mods.py:1122 cddagl/ui/views/soundpacks.py:219
+#: cddagl/ui/views/soundpacks.py:979 cddagl/ui/views/soundpacks.py:1006
+#: cddagl/ui/views/tabbed.py:476
+msgid "Url:"
+msgstr "链接:"
+
+#: cddagl/ui/views/mods.py:262 cddagl/ui/views/mods.py:1043
+#: cddagl/ui/views/soundpacks.py:221 cddagl/ui/views/soundpacks.py:946
+msgid "Path:"
+msgstr "路径:"
+
+#: cddagl/ui/views/mods.py:264 cddagl/ui/views/soundpacks.py:223
+#: cddagl/ui/views/tabbed.py:487
+msgid "Size:"
+msgstr "尺寸:"
+
+#: cddagl/ui/views/mods.py:265 cddagl/ui/views/soundpacks.py:224
+msgid "Home page:"
+msgstr "主页:"
+
+#: cddagl/ui/views/mods.py:369
+msgid "Mod already present"
+msgstr "Mod已存在"
+
+#: cddagl/ui/views/mods.py:370
+msgid ""
+"It seems this mod is already installed. The launcher will not overwrite "
+"the mod if it has the same directory name. You might want to delete the "
+"mod first if you want to update it. Also, there can only be a single mod "
+"with the same ident value available in the game."
+msgstr "似乎这个模组已经安装了。如果有相同的目录名，启动器不会覆盖该模组。如果您想更新它，您可能需要先删除该模组。此外，游戏中只能有一个具有相同标识值的模组。"
+
+#: cddagl/ui/views/mods.py:377
+msgid "Are you sure you want to install the {name} mod?"
+msgstr "您确定要安装 {name} 模组吗？"
+
+#: cddagl/ui/views/mods.py:380
+msgid "Install the mod"
+msgstr "安装模组"
+
+#: cddagl/ui/views/mods.py:382 cddagl/ui/views/soundpacks.py:335
+msgid "Do not install again"
+msgstr "不要再次安装"
+
+#: cddagl/ui/views/mods.py:456 cddagl/ui/views/mods.py:482
+msgid "Cancel mod installation"
+msgstr "取消mod安装"
+
+#: cddagl/ui/views/mods.py:476
+msgid "Could not find downloaded file archive"
+msgstr "找不到下载的文件存档"
+
+#: cddagl/ui/views/mods.py:502 cddagl/ui/views/mods.py:536
+#: cddagl/ui/views/mods.py:664 cddagl/ui/views/mods.py:707
+#: cddagl/ui/views/soundpacks.py:448 cddagl/ui/views/soundpacks.py:493
+#: cddagl/ui/views/soundpacks.py:611 cddagl/ui/views/soundpacks.py:655
+msgid "Selected file is a bad archive file"
+msgstr "选定的文件是一个糟糕的存档文件"
+
+#: cddagl/ui/views/mods.py:509 cddagl/ui/views/mods.py:671
+#: cddagl/ui/views/soundpacks.py:455 cddagl/ui/views/soundpacks.py:618
+msgid "Selected file is a password protected archive file"
+msgstr "选择的文件是一个密码保护归档文件"
+
+#: cddagl/ui/views/mods.py:572 cddagl/ui/views/soundpacks.py:528
+msgid "Soundpack installation cancelled"
+msgstr "Soundpack安装取消"
+
+#: cddagl/ui/views/mods.py:649
+msgid "Could not find downloaded archive ({file})"
+msgstr "找不到下载归档文件 ({file})"
+
+#: cddagl/ui/views/mods.py:689 cddagl/ui/views/soundpacks.py:475
+#: cddagl/ui/views/soundpacks.py:637
+msgid "Unknown downloaded archive format ({extension})"
+msgstr "未知的下载档案格式({extension})"
+
+#: cddagl/ui/views/mods.py:887
+msgid "Finding the mod(s)"
+msgstr "正在查找模组"
+
+#: cddagl/ui/views/mods.py:918
+msgid "Mod installation cancelled - There is no mod in the downloaded archive"
+msgstr "模组安装已取消 - 下载的存档中没有模组"
+
+#: cddagl/ui/views/mods.py:930
+msgid "Mod installation cancelled - There is already a {basename} directory in {mods_dir}"
+msgstr "模组安装已取消 - {mods_dir} 中已存在一个名为 {basename} 的目录"
+
+#: cddagl/ui/views/mods.py:939
+msgid "Mod installation completed"
+msgstr "Mod安装完成"
+
+#: cddagl/ui/views/mods.py:963 cddagl/ui/views/mods.py:980
+#: cddagl/ui/views/mods.py:1220
+msgid "*Error*"
+msgstr "*错误*"
+
+#: cddagl/ui/views/mods.py:964 cddagl/ui/views/mods.py:1218
+#: cddagl/ui/views/soundpacks.py:880 cddagl/ui/views/soundpacks.py:1098
+msgid " (Disabled)"
+msgstr "(取消)"
+
+#: cddagl/ui/views/mods.py:965 cddagl/ui/views/mods.py:1055
+#: cddagl/ui/views/soundpacks.py:881 cddagl/ui/views/soundpacks.py:954
+msgid "Enable"
+msgstr "启用"
+
+#: cddagl/ui/views/mods.py:997
+msgid "Delete mod"
+msgstr "删除mod"
+
+#: cddagl/ui/views/mods.py:998
+msgid "This will delete the mod directory. It cannot be undone."
+msgstr "这将删除mod目录。"
+
+#: cddagl/ui/views/mods.py:1000
+msgid "Are you sure you want to delete the {view} mod?"
+msgstr "你确定你要删除{view} mod?"
+
+#: cddagl/ui/views/mods.py:1002
+msgid "Delete the mod"
+msgstr "删除mod"
+
+#: cddagl/ui/views/mods.py:1004
+msgid "I want to keep the mod"
+msgstr "我想让mod"
+
+#: cddagl/ui/views/mods.py:1013
+msgid "Mod deletion cancelled"
+msgstr "mod删除取消"
+
+#: cddagl/ui/views/mods.py:1018
+msgid "Mod deleted"
+msgstr "mod删除"
+
+#: cddagl/ui/views/mods.py:1110 cddagl/ui/views/soundpacks.py:994
+msgid "Getting remote size"
+msgstr "获取远程大小"
+
+#: cddagl/ui/views/settings.py:96 cddagl/ui/views/settings.py:162
+msgid "System language or best match ({locale})"
+msgstr "系统语言或最佳匹配 ({locale})"
+
+#: cddagl/ui/views/settings.py:157
+msgid "Command line parameters"
+msgstr "命令行参数"
+
+#: cddagl/ui/views/settings.py:159
+msgid "Keep the launcher opened after launching the game"
+msgstr "把启动器发射后打开游戏介绍"
+
+#: cddagl/ui/views/settings.py:160
+msgid "Language"
+msgstr "语言:"
+
+#: cddagl/ui/views/settings.py:164
+msgid "Allow multiple instances of the launcher to be started"
+msgstr "允许多个启动器启动的实例"
+
+#: cddagl/ui/views/settings.py:167
+msgid "Use the launcher directory as the game directory"
+msgstr "使用启动器目录作为游戏目录"
+
+#: cddagl/ui/views/settings.py:169 cddagl/ui/views/tabbed.py:243
+msgid "Do not check for new version of the CDDA Game Launcher on launch"
+msgstr "不检查新版本的游戏CDDA启动器"
+
+#: cddagl/ui/views/settings.py:171
+msgid "Launcher"
+msgstr "启动器"
+
+#: cddagl/ui/views/settings.py:374
+msgid "Do not copy or move the save directory"
+msgstr "不复制或移动的保存目录"
+
+#: cddagl/ui/views/settings.py:376
+msgid ""
+"If your save directory size is large, it might take a long time to copy "
+"it during the update process.\n"
+"This option might help you speed the whole thing but your previous "
+"version will lack the save directory."
+msgstr ""
+"如果您的存档目录大小较大，在更新过程中复制它可能需要很长时间。\n"
+"这个选项可能会帮助您加快整个过程，但您之前的版本将缺少存档目录。"
+
+
+#: cddagl/ui/views/settings.py:381
+msgid "Keep a copy of the downloaded archive in the following directory:"
+msgstr "保持一份下载的archive在以下目录中:"
+
+#: cddagl/ui/views/settings.py:384
+msgid "Automatically refresh builds list every"
+msgstr "总是自动刷新build"
+
+#: cddagl/ui/views/settings.py:385
+msgid "minutes"
+msgstr "分"
+
+#: cddagl/ui/views/settings.py:386
+msgid "Remove previous version after update (not recommended)"
+msgstr "删除之前的版本更新后(不推荐)"
+
+#: cddagl/ui/views/settings.py:388
+msgid ""
+"Permanently delete files instead of moving them in the recycle bin (not "
+"recommended)"
+msgstr "永久删除的文件,而不是移动在回收站(不推荐)"
+
+#: cddagl/ui/views/settings.py:443
+msgid "Archive directory"
+msgstr "归档文件目录"
+
+#: cddagl/ui/views/soundpacks.py:201
+msgid "Add this new soundpack to the repository"
+msgstr "将这个新的音效包添加到存储库中"
+
+#: cddagl/ui/views/soundpacks.py:202
+msgid ""
+"* Name: [Enter the name of the soundpack]\n"
+"* Url: [Enter the Url where we can find the soundpack]\n"
+"* Author: [Enter the name of the author]\n"
+"* Homepage: [Enter the Url of the author website or where the soundpack was published]\n"
+"* Soundpack not found in version: {version}\n"
+msgstr ""
+"* 名称：[输入声音包的名称]\n"
+"* 网址：[输入我们可以找到声音包的网址]\n"
+"* 作者：[输入作者的名称]\n"
+"* 主页：[输入作者网站的网址或声音包发布的地方]\n"
+"* 在版本中未找到声音包：{version}\n"
+
+
+#: cddagl/ui/views/soundpacks.py:210
+msgid "<a href=\"{url}\">Suggest a new soundpack on GitHub</a>"
+msgstr "<a href=\"{url}\">在GitHub推荐一个新的音效包</a>"
+
+#: cddagl/ui/views/soundpacks.py:212 cddagl/ui/views/soundpacks.py:671
+msgid "Install this soundpack"
+msgstr "安装这个音效包"
+
+#: cddagl/ui/views/soundpacks.py:214
+msgid "View name:"
+msgstr "视图名称:"
+
+#: cddagl/ui/views/soundpacks.py:321
+msgid "Soundpack already present"
+msgstr "音效包已经存在"
+
+#: cddagl/ui/views/soundpacks.py:323
+msgid ""
+"It seems this soundpack is already installed. The launcher will not "
+"overwrite the soundpack if it has the same directory name. You might want"
+" to delete the soundpack first if you want to update it. Also, there can "
+"only be a single soundpack with the same name value available in the "
+"game."
+msgstr ""
+"这个声音包似乎已经安装了。如果有相同的目录名，启动器将不会覆盖该声音包。如果您想更新它，您可能需要先删除声音包。另外，在游戏中只能有一个同名的声音包。"
+
+#: cddagl/ui/views/soundpacks.py:330
+msgid "Are you sure you want to install the {view} soundpack?"
+msgstr "你确定你想要安装{view}音效包?"
+
+#: cddagl/ui/views/soundpacks.py:333
+msgid "Install the soundpack"
+msgstr "安装音效包"
+
+#: cddagl/ui/views/soundpacks.py:407 cddagl/ui/views/soundpacks.py:426
+msgid "Cancel soundpack installation"
+msgstr "取消音效包安装"
+
+#: cddagl/ui/views/soundpacks.py:812
+msgid "Finding the soundpack"
+msgstr "搜索音效包"
+
+#: cddagl/ui/views/soundpacks.py:840
+msgid ""
+"Soundpack installation cancelled - There is no soundpack in the "
+"downloaded archive"
+msgstr "音效包安装取消 - 已下载的存档中没有 Soundpack "
+
+#: cddagl/ui/views/soundpacks.py:850
+msgid ""
+"Soundpack installation cancelled - There is already a {basename} "
+"directory in {soundpacks_dir}"
+msgstr "音效包安装取消 - 已经有一个{basename}在{soundpacks_dir}目录"
+
+#: cddagl/ui/views/soundpacks.py:856
+msgid "Soundpack installation completed"
+msgstr "音效包安装完成"
+
+#: cddagl/ui/views/soundpacks.py:912
+msgid "Delete soundpack"
+msgstr "删除音效包"
+
+#: cddagl/ui/views/soundpacks.py:913
+msgid "This will delete the soundpack directory. It cannot be undone."
+msgstr "这将删除音效包目录。无法完成操作。"
+
+#: cddagl/ui/views/soundpacks.py:915
+msgid "Are you sure you want to delete the {view} soundpack?"
+msgstr "你确定你要删除{view}音效包?"
+
+#: cddagl/ui/views/soundpacks.py:917
+msgid "Delete the soundpack"
+msgstr "删除音效包"
+
+#: cddagl/ui/views/soundpacks.py:919
+msgid "I want to keep the soundpack"
+msgstr "我想要保留这个音效包"
+
+#: cddagl/ui/views/soundpacks.py:928
+msgid "Soundpack deletion cancelled"
+msgstr "音效包的删除已终止"
+
+#: cddagl/ui/views/soundpacks.py:933
+msgid "Soundpack deleted"
+msgstr "音效包已删除"
+
+#: cddagl/ui/views/tabbed.py:70 cddagl/ui/views/tabbed.py:93
+msgid "&File"
+msgstr "文件"
+
+#: cddagl/ui/views/tabbed.py:71 cddagl/ui/views/tabbed.py:97
+msgid "E&xit"
+msgstr "退出"
+
+#: cddagl/ui/views/tabbed.py:72 cddagl/ui/views/tabbed.py:101
+msgid "&Help"
+msgstr "帮助"
+
+#: cddagl/ui/views/tabbed.py:74 cddagl/ui/views/tabbed.py:106
+msgid "&Check for update"
+msgstr "检查更新"
+
+#: cddagl/ui/views/tabbed.py:75 cddagl/ui/views/tabbed.py:112
+msgid "&About CDDA Game Launcher"
+msgstr "关于CDDA游戏启动器"
+
+#: cddagl/ui/views/tabbed.py:254
+msgid "Launcher update"
+msgstr "启动器更新"
+
+#: cddagl/ui/views/tabbed.py:255
+msgid ""
+"You are using version {version} but there is a new update for CDDA Game "
+"Launcher. Would you like to update?"
+msgstr "您使用的版本是{version}，现在已经有了新的CDDA游戏启动器版本。你想要升级吗？"
+
+#: cddagl/ui/views/tabbed.py:260
+msgid "Update the launcher"
+msgstr "更新启动器"
+
+#: cddagl/ui/views/tabbed.py:262
+msgid "Not right now"
+msgstr "稍后"
+
+#: cddagl/ui/views/tabbed.py:293
+msgid "Up to date"
+msgstr "最新版"
+
+#: cddagl/ui/views/tabbed.py:294
+msgid "The CDDA Game Launcher is up to date."
+msgstr "CDDA游戏启动器已是最新版。"
+
+#: cddagl/ui/views/tabbed.py:401 cddagl/ui/views/tabbed.py:419
+msgid "Main"
+msgstr "主界面"
+
+#: cddagl/ui/views/tabbed.py:402 cddagl/ui/views/tabbed.py:424
+msgid "Backups"
+msgstr "备份"
+
+#: cddagl/ui/views/tabbed.py:403 cddagl/ui/views/tabbed.py:429
+msgid "Mods"
+msgstr "模组"
+
+#: cddagl/ui/views/tabbed.py:405 cddagl/ui/views/tabbed.py:439
+msgid "Soundpacks"
+msgstr "音效包"
+
+#: cddagl/ui/views/tabbed.py:407 cddagl/ui/views/tabbed.py:449
+msgid "Settings"
+msgstr "设置"
+
+#: cddagl/ui/views/tabbed.py:434
+msgid "Tilesets"
+msgstr "贴图包"
+
+#: cddagl/ui/views/tabbed.py:444
+msgid "Fonts"
+msgstr "字体"
+
+#: cddagl/ui/views/tabbed.py:467
+msgid "Progress"
+msgstr "进展"
+
+#: cddagl/ui/views/tabbed.py:496
+msgid "Speed"
+msgstr "速度:"
+
+#: cddagl/ui/views/tabbed.py:515
+msgid "CDDA Game Launcher self-update"
+msgstr "CDDA游戏启动器自动更新"
+
