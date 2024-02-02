@@ -21,8 +21,9 @@ from PyQt5.QtCore import Qt, QTimer, QUrl, QFileInfo, QStringListModel
 from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest
 from PyQt5.QtWidgets import (
     QWidget, QGridLayout, QGroupBox, QVBoxLayout, QLabel, QLineEdit, QPushButton, QProgressBar, QTextBrowser,
-    QTabWidget, QMessageBox, QHBoxLayout, QListView, QAbstractItemView, QTextEdit
+    QTabWidget, QMessageBox, QHBoxLayout, QListView, QAbstractItemView, QTextEdit, QPlainTextEdit
 )
+from PyQt5.QtGui import QTextCursor
 from py7zlib import Archive7z, NoPasswordGivenError, FormatError
 from werkzeug.http import parse_options_header
 from werkzeug.utils import secure_filename
@@ -69,17 +70,11 @@ class ModsTab(QTabWidget):
         layout = QVBoxLayout()
 
         top_part = QWidget()
-        tp_layout = QHBoxLayout()
+        tp_layout = QHBoxLayout() # 水平组布局控件
         tp_layout.setContentsMargins(0, 0, 0, 0)
         self.tp_layout = tp_layout
 
         installed_gb = QGroupBox()
-        installed_gb.setMinimumHeight(400)
-        installed_gb.setStyleSheet('''QListView {
-            background-color: #fff;
-            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-            min-height: 280px;
-        }''')
         tp_layout.addWidget(installed_gb)
         self.installed_gb = installed_gb
 
@@ -94,7 +89,7 @@ class ModsTab(QTabWidget):
         self.installed_lv = installed_lv
 
         installed_buttons = QWidget()
-        ib_layout = QHBoxLayout()
+        ib_layout = QHBoxLayout() # 水平按钮布局控件
         installed_buttons.setLayout(ib_layout)
         ib_layout.setContentsMargins(0, 0, 0, 0)
         self.ib_layout = ib_layout
@@ -102,6 +97,17 @@ class ModsTab(QTabWidget):
         installed_gb_layout.addWidget(installed_buttons)
 
         disable_existing_button = QPushButton()
+        disable_existing_button.setStyleSheet('''QPushButton {
+            background-color: #f39c12; /* 橙色 */
+            color: white;
+            }
+            QPushButton:hover {
+        background-color: #d35400;
+            }
+            QPushButton:pressed {
+                background-color: #e67e22;
+            }
+        ''')
         disable_existing_button.clicked.connect(self.disable_existing)
         disable_existing_button.setEnabled(False)
         ib_layout.addWidget(disable_existing_button)
@@ -111,13 +117,6 @@ class ModsTab(QTabWidget):
         delete_existing_button.setStyleSheet('''QPushButton {
             background-color: #c0392b; /* 暗红色 */
             color: white;
-            font-size: 15px;
-            min-height: 15px;
-            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-            border-radius: 5px;
-            padding: 10px 20px;
-            margin: 10px 10px;
-            outline: none;
         }
         QPushButton:hover {
             background-color: #e74c3c;
@@ -132,12 +131,6 @@ class ModsTab(QTabWidget):
         self.delete_existing_button = delete_existing_button
 
         repository_gb = QGroupBox()
-        repository_gb.setMinimumHeight(400)
-        repository_gb.setStyleSheet('''QListView {
-            background-color: #fff;
-            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-            min-height: 280px;
-        }''')
         tp_layout.addWidget(repository_gb)
         self.repository_gb = repository_gb
 
@@ -167,12 +160,6 @@ class ModsTab(QTabWidget):
         self.top_part = top_part
 
         details_gb = QGroupBox()
-        details_gb.setMinimumHeight(400)
-        details_gb.setStyleSheet('''QListView {
-            background-color: #fff;
-            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-            min-height: 280px;
-        }''')
         layout.addWidget(details_gb)
         self.details_gb = details_gb
 
@@ -221,7 +208,7 @@ class ModsTab(QTabWidget):
         details_gb_layout.addWidget(description_label, 2, 0, 1, 1, Qt.AlignRight)
         self.description_label = description_label
 
-        description_le = QLineEdit()
+        description_le = QPlainTextEdit()
         description_le.setReadOnly(True)
         details_gb_layout.addWidget(description_le, 2, 1, 2, 3)
         self.description_le = description_le
@@ -282,12 +269,27 @@ class ModsTab(QTabWidget):
         self.delete_existing_button.setText(_('Delete'))
         suggest_url = cons.NEW_ISSUE_URL + '?' + urlencode({
             'title': _('Add this new mod to the repository'),
-            'body': _('''* Name: [Enter the name of the mod]
-* Url: [Enter the Url where we can find the mod]
-* Author: [Enter the name of the author]
-* Homepage: [Enter the Url of the author website or where the mod was published]
-* Mod not found in version: {version}
-''').format(version=version)
+            'body': _('''## 请求加入模组：模组名[模组支持的游戏版本]
+
+```
+- type: direct_download  # 可选项: direct_download, github_release, github_repo, gitlab_repo, custom
+  ident: unique_mod_identifier  # 您的mod的唯一标识符
+  name: Mod Name  # 您的mod的名称
+  authors:  # 作者信息，可以是单个作者或作者列表
+    - Author1
+    - Author2
+  maintainers:  # 可选项：如果有维护者，包括维护者信息
+    - Maintainer1
+    - Maintainer2
+  description: A brief description of your mod.  # 简要描述您的mod
+  category: content  # 您的mod所属的类别，如items, creatures, vehicles, buildings, misc_additions, rebalance, monster_exclude, total_conversion, content等
+  dependencies:  # 可选项：如果您的mod依赖于其他mod，列出这些依赖项
+    - mod_dependency1
+    - mod_dependency2
+  size: 12345  # 您的mod的文件大小，以字节为单位
+  url: https://github.com/your_username/your_mod_repo/archive/master.zip  # 您的mod的下载链接
+  homepage: https://link_to_your_mod_homepage.com  # 您的mod的主页链接
+```''').format(version=version)
         })
         self.suggest_new_label.setText(_('<a href="{url}">Suggest a new mod '
             'on GitHub</a>').format(url=suggest_url))
@@ -1077,8 +1079,8 @@ class ModsTab(QTabWidget):
                 else:
                     authors = ', '.join(authors)
                     self.author_le.setText(authors)
-            self.description_le.setText(selected_info.get('description', ''))
-            self.description_le.setCursorPosition(0)
+            self.description_le.setPlainText(selected_info.get('description', ''))
+            self.description_le.moveCursor(QTextCursor.Start)
             self.description_le.setToolTip(selected_info.get('description', ''))
             self.category_le.setText(selected_info.get('category', ''))
             self.path_label.setText(_('Path:'))
@@ -1128,8 +1130,8 @@ class ModsTab(QTabWidget):
                 else:
                     authors = ', '.join(authors)
                     self.author_le.setText(authors)
-            self.description_le.setText(selected_info.get('description', ''))
-            self.description_le.setCursorPosition(0)
+            self.description_le.setPlainText(selected_info.get('description', ''))
+            self.description_le.moveCursor(QTextCursor.Start)
             self.description_le.setToolTip(selected_info.get('description', ''))
             
             self.category_le.setText(selected_info.get('category', ''))
@@ -1268,7 +1270,7 @@ class ModsTab(QTabWidget):
         self.name_le.setText('')
         self.ident_le.setText('')
         self.author_le.setText('')
-        self.description_le.setText('')
+        self.description_le.setPlainText('')
         self.category_le.setText('')
         self.path_le.setText('')
         self.size_le.setText('')

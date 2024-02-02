@@ -4024,3 +4024,16 @@
   size: 3382
   url: "https://alist.doiiars.com/d/Public/Cataclysmdda/锤子镰刀.zip"
   homepage: 'QQ群：757292693CDDA【新世界基地】'
+
+- type: direct_download
+  category: items
+  ident: FlyingHome
+  name: 飞行堡垒
+  authors:
+    - α cat
+  description: 添加了一些道具，让飞行堡垒变得可行（未平衡版）
+  dependencies:
+    - dda
+  size: 7024
+  url: "https://alist.doiiars.com/d/Public/Cataclysmdda/飞行堡垒.zip"
+  homepage: 'https://tieba.baidu.com/p/8884699124'

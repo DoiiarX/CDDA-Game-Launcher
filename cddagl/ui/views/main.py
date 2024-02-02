@@ -204,21 +204,22 @@ class GameDirGroupBox(QGroupBox):
         self.launch_game_button = launch_game_button
 
         restore_button = QPushButton()
-        restore_button.setStyleSheet('''QPushButton#restoreButton {
+        restore_button.setStyleSheet('''QPushButton {
             background-color: #27ae60; /* 绿色 */
             color: white;
             font-size: 20px;
             min-height: 15px;
             font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+            vertical-align: middle; /* 将文字垂直居中 */
             border-radius: 5px;
             padding: 10px 20px;
             margin: 10px 10px;
             outline: none;
         }
-        QPushButton#restoreButton:hover {
+        QPushButton:hover {
             background-color: #2ecc71;
         }
-        QPushButton#restoreButton:pressed {
+        QPushButton:pressed {
             background-color: #229954;
         }
         ''')

@@ -1326,7 +1326,7 @@ msgstr "复制中{name} - {entry}"
 
 #: cddagl/ui/views/mods.py:238 cddagl/ui/views/soundpacks.py:199
 msgid "Installed"
-msgstr "安装"
+msgstr "已安装"
 
 #: cddagl/ui/views/mods.py:239 cddagl/ui/views/mods.py:978
 #: cddagl/ui/views/mods.py:1050 cddagl/ui/views/soundpacks.py:200

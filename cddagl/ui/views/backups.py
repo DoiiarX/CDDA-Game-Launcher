@@ -77,7 +77,7 @@ class BackupsTab(QTabWidget):
                     self.backups_table.setColumnWidth(index, value)
 
         restore_button = QPushButton()
-        restore_button.setStyleSheet('''QPushButton#restoreButton {
+        restore_button.setStyleSheet('''QPushButton {
             background-color: #27ae60; /* 绿色 */
             color: white;
             font-size: 15px;
@@ -88,10 +88,10 @@ class BackupsTab(QTabWidget):
             margin: 10px 10px;
             outline: none;
         }
-        QPushButton#restoreButton:hover {
+        QPushButton:hover {
             background-color: #2ecc71;
         }
-        QPushButton#restoreButton:pressed {
+        QPushButton:pressed {
             background-color: #229954;
         }
         ''')

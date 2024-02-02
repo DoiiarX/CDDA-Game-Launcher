@@ -71,12 +71,6 @@ class SoundpacksTab(QTabWidget):
         self.tp_layout = tp_layout
 
         installed_gb = QGroupBox()
-        installed_gb.setMinimumHeight(400)
-        installed_gb.setStyleSheet('''QListView {
-            background-color: #fff;
-            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-            min-height: 280px;
-        }''')
         tp_layout.addWidget(installed_gb)
         self.installed_gb = installed_gb
 
@@ -99,6 +93,17 @@ class SoundpacksTab(QTabWidget):
         installed_gb_layout.addWidget(installed_buttons)
 
         disable_existing_button = QPushButton()
+        disable_existing_button.setStyleSheet('''QPushButton {
+            background-color: #f39c12; /* 橙色 */
+            color: white;
+            }
+            QPushButton:hover {
+        background-color: #d35400;
+            }
+            QPushButton:pressed {
+                background-color: #e67e22;
+            }
+        ''')
         disable_existing_button.clicked.connect(self.disable_existing)
         disable_existing_button.setEnabled(False)
         ib_layout.addWidget(disable_existing_button)
@@ -108,13 +113,6 @@ class SoundpacksTab(QTabWidget):
         delete_existing_button.setStyleSheet('''QPushButton {
             background-color: #c0392b; /* 暗红色 */
             color: white;
-            font-size: 15px;
-            min-height: 15px;
-            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-            border-radius: 5px;
-            padding: 10px 20px;
-            margin: 10px 10px;
-            outline: none;
         }
         QPushButton:hover {
             background-color: #e74c3c;
@@ -129,12 +127,6 @@ class SoundpacksTab(QTabWidget):
         self.delete_existing_button = delete_existing_button
 
         repository_gb = QGroupBox()
-        repository_gb.setMinimumHeight(400)
-        repository_gb.setStyleSheet('''QListView {
-            background-color: #fff;
-            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-            min-height: 280px;
-        }''')
         tp_layout.addWidget(repository_gb)
         self.repository_gb = repository_gb
 
@@ -164,12 +156,6 @@ class SoundpacksTab(QTabWidget):
         self.top_part = top_part
 
         details_gb = QGroupBox()
-        details_gb.setMinimumHeight(400)
-        details_gb.setStyleSheet('''QListView {
-            background-color: #fff;
-            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-            min-height: 280px;
-        }''')
         layout.addWidget(details_gb)
         self.details_gb = details_gb
 
@@ -239,11 +225,14 @@ class SoundpacksTab(QTabWidget):
         self.repository_gb.setTitle(_('Repository'))
         suggest_url = cons.NEW_ISSUE_URL + '?' + urlencode({
             'title': _('Add this new soundpack to the repository'),
-            'body': _('''* Name: [Enter the name of the soundpack]
-* Url: [Enter the Url where we can find the soundpack]
-* Author: [Enter the name of the author]
-* Homepage: [Enter the Url of the author website or where the soundpack was published]
-* Soundpack not found in version: {version}
+            'body': _('''请求加入音效包：音效包名
+```
+- type: "direct_download"      # Soundpack的类型，这里是直接下载类型
+  viewname: "Soundpack Name"  # Soundpack的可视名称
+  name: "Soundpack Name"      # Soundpack的内部名称
+  url: "https://example.com/soundpack.zip"  # Soundpack的下载链接
+  homepage: "https://example.com/soundpack-homepage"  # Soundpack的官方主页链接
+```
 ''').format(version=version)
         })
         self.suggest_new_label.setText(

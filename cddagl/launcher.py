@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2015-2021 Rémy Roy
 #
 # SPDX-License-Identifier: MIT
+# -*- coding: utf-8 -*-
 
 import logging
 import os
@@ -8,6 +9,8 @@ import sys
 import traceback
 from io import StringIO
 from logging.handlers import RotatingFileHandler
+
+import markdown2
 
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication
@@ -134,8 +137,8 @@ def start_ui(locale, single_instance):
     main_app.setStyleSheet("""
         /* QWidget通用样式 */
         QToolTip {
-            font-size: 24px;
-            border-radius: 4px;
+            font-size: 20px;
+            border-radius: 5px;
             padding: 5px;
             background-color: #ffffe0; /* 更柔和的黄色背景 */
             color: #000000;
@@ -149,24 +152,47 @@ def start_ui(locale, single_instance):
             font-size: 14px;
         }
 
-        QLineEdit, QProgressBar, QTextEdit {
+        QLineEdit, QTextEdit {
             background-color: #ecf0f1;
             border: 1px solid #bdc3c7;
             border-radius: 4px;
             padding: 5px;
             min-height: 21px;
             font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+            vertical-align: middle; /* 将文字垂直居中 */
+        }
+        
+        QPlainTextEdit {
+            background-color: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            padding: 5px;
+            min-height: 21px;
+            font-size: 20px;
+            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        }
+        
+        QProgressBar {
+            background-color: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            padding: 5px;
+            min-height: 14px;
+            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+            vertical-align: middle; /* 将文字垂直居中 */
+            text-align: center; /* 将文字水平居中 */
         }
 
         QPushButton {
             background-color: #3498db;
             color: #ffffff;
             font-size: 15px;
-            min-height: 15px;
+            height: 20px;
             font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+            vertical-align: middle; /* 将文字垂直居中 */
             border-radius: 5px;
             padding: 10px 20px;
-            margin: 10px 10px;
+            margin: 0px 10px;
             outline: none;
         }
 
@@ -182,12 +208,13 @@ def start_ui(locale, single_instance):
             font-size: 15px;
             margin-bottom: 5px;
             font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+            vertical-align: middle; /* 将文字垂直居中 */
         }
 
         QListView {
             background-color: #fff;
             font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-            min-height: 280px;
+            min-height: 40px;
         }
 
         QListView::item {
@@ -210,9 +237,17 @@ def start_ui(locale, single_instance):
             background-color: #3498db;
             color: #ffffff;
         }
+        
         /* 其他控件样式 */
-        QGroupBox, QVBoxLayout, QHBoxLayout {
-         /* border: 1px solid #bdc3c7;*/
+        QVBoxLayout, QHBoxLayout {
+        /* border: 1px solid #bdc3c7;*/
+            margin-top: 1em;
+        }
+        
+        QGroupBox {
+            font-size: 24px; /* 设置更大的字体大小 */
+            font-weight: bold; /* 设置字体加粗 */
+            border: none;
             margin-top: 1em;
         }
 

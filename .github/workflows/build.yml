@@ -51,7 +51,8 @@ jobs:
         which python
         python --version
         pip --version
-        pip install SQLAlchemy alembic PyQt5 PyInstaller html5lib cssselect arrow rarfile Babel pypiwin32 pywinutils Markdown Werkzeug httpx
+        pip install -r requirements.txt
+        pip install PyInstaller html5lib cssselect
     - name: Install dependencies
       shell: bash -l {0}
       run: |
