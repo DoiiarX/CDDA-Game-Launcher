@@ -432,7 +432,8 @@ class ModsTab(QWidget):
 
             
             main_window = self.get_main_window()
-            status_bar = main_window.statusBar()
+            self.status_bar = main_window.statusBar()
+            status_bar = self.status_bar
                 
             self.install_type = selected_info['type']
 
@@ -573,6 +574,7 @@ class ModsTab(QWidget):
         else:
             main_window = self.get_main_window()
             status_bar = main_window.statusBar()
+            status_bar = status_bar
 
             # Cancel installation
             if self.downloading_new_mod:
@@ -644,7 +646,8 @@ class ModsTab(QWidget):
 
         self.clear_download_ui()
         main_window = self.get_main_window()
-        status_bar = main_window.statusBar()
+        self.status_bar = main_window.statusBar()
+        status_bar = self.status_bar
         if self.download_aborted:
             delete_path(self.download_dir)
 
@@ -653,7 +656,7 @@ class ModsTab(QWidget):
             redirect = self.download_http_reply.attribute(
                 QNetworkRequest.RedirectionTargetAttribute)
             if redirect is not None:
-                self.handle_redirection(redirect)
+                redirected_url = self.handle_redirection(redirect)
                 dowloading_speed_label = QLabel()
                 status_bar.addWidget(dowloading_speed_label)
                 self.dowloading_speed_label = dowloading_speed_label
@@ -760,7 +763,7 @@ class ModsTab(QWidget):
     def handle_redirection(self, redirect):
         delete_path(self.download_dir)
         os.makedirs(self.download_dir)
-
+        status_bar = self.status_bar
         status_bar.busy += 1
 
         redirected_url = urljoin(
@@ -772,12 +775,13 @@ class ModsTab(QWidget):
             redirected_url))
         status_bar.addWidget(downloading_label, 100)
         self.downloading_label = downloading_label
-
+        return redirected_url
     def clear_download_ui(self):
         if self.downloading_file is not None:
             self.downloading_file.close()
 
         main_window = self.get_main_window()
+        status_bar = self.status_bar
         status_bar = main_window.statusBar()
         status_bar.removeWidget(self.downloading_label)
         status_bar.removeWidget(self.dowloading_speed_label)
@@ -875,7 +879,8 @@ class ModsTab(QWidget):
         self.extracting_index = 0
 
         main_window = self.get_main_window()
-        status_bar = main_window.statusBar()
+        self.status_bar = main_window.statusBar()
+        status_bar = self.status_bar
 
         status_bar.busy += 1
 
@@ -899,7 +904,8 @@ class ModsTab(QWidget):
                 self.extracting_timer.stop()
 
                 main_window = self.get_main_window()
-                status_bar = main_window.statusBar()
+                self.status_bar = main_window.statusBar()
+                status_bar = self.status_bar
 
                 status_bar.removeWidget(self.extracting_label)
                 status_bar.removeWidget(self.extracting_progress_bar)
@@ -948,24 +954,28 @@ class ModsTab(QWidget):
         self.moving_new_mod = True
 
         main_window = self.get_main_window()
-        status_bar = main_window.statusBar()
+        self.status_bar = main_window.statusBar()
+        status_bar = self.status_bar
         status_bar.showMessage(_('Finding the mod(s)'))
 
-        mod_dirs = self.find_mods_in_directory(self.extract_dir)
+        mod_dirs = self.__find_mods_in_directory(self.extract_dir)
 
         if not mod_dirs:
             status_bar.showMessage(_('Mod installation cancelled - No mod found in the downloaded archive'))
-            self.clean_up_after_install()
+            self.__clean_up_after_install()
             return
 
-        if self.move_mods_to_mods_dir(mod_dirs):
+        if self.__move_mods_to_mods_dir(mod_dirs):
             status_bar.showMessage(_('Mod installation completed'))
         else:
             status_bar.showMessage(_('Mod installation cancelled - Conflict with existing mod directories'))
 
-        self.clean_up_after_install()
+        self.__clean_up_after_install()
 
-    def find_mods_in_directory(self, directory):
+    def __find_mods_in_directory(self, directory):
+        """
+        查找目录中的mod
+        """
         mod_dirs = set()
         next_scans = deque([directory])
 
@@ -976,21 +986,22 @@ class ModsTab(QWidget):
                         next_scans.append(entry.path)
                     elif entry.is_file() and os.path.basename(entry.path).lower() == 'modinfo.json':
                         mod_dirs.add(os.path.dirname(entry.path))
-
+                        logger.debug(f"find mod here: {os.path.dirname(entry.path)}")
         return mod_dirs
 
-    def move_mods_to_mods_dir(self, mod_dirs):
+    def __move_mods_to_mods_dir(self, mod_dirs):
         all_moved = True
         for mod_dir in mod_dirs:
             mod_dir_name = os.path.basename(mod_dir)
             target_dir = os.path.join(self.mods_dir, mod_dir_name)
             if os.path.exists(target_dir):
+                logger.error("Mod directory %s already exists in mods directory", mod_dir_name)
                 all_moved = False
-                break
+                continue
             shutil.move(mod_dir, self.mods_dir)
         return all_moved
 
-    def clean_up_after_install(self):
+    def __clean_up_after_install(self):
         delete_path(self.extract_dir)
         self.moving_new_mod = False
         self.game_dir_changed(self.game_dir)
@@ -1017,7 +1028,8 @@ class ModsTab(QWidget):
                 self.disable_existing_button.setText(_('Enable'))
             except OSError as e:
                 main_window = self.get_main_window()
-                status_bar = main_window.statusBar()
+                self.status_bar = main_window.statusBar()
+                status_bar = self.status_bar
 
                 status_bar.showMessage(str(e))
         else:
@@ -1033,7 +1045,8 @@ class ModsTab(QWidget):
                 self.disable_existing_button.setText(_('Disable'))
             except OSError as e:
                 main_window = self.get_main_window()
-                status_bar = main_window.statusBar()
+                self.status_bar = main_window.statusBar()
+                status_bar = self.status_bar
 
                 status_bar.showMessage(str(e))
 
@@ -1059,7 +1072,8 @@ class ModsTab(QWidget):
 
         if confirm_msgbox.exec() == 0:
             main_window = self.get_main_window()
-            status_bar = main_window.statusBar()
+            self.status_bar = main_window.statusBar()
+            status_bar = self.status_bar
 
             if not delete_path(selected_info['path']):
                 status_bar.showMessage(_('Mod deletion cancelled'))
