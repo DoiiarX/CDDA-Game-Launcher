@@ -6,21 +6,23 @@ import logging
 from datetime import datetime
 from cddagl.functions import strfdelta
 from cddagl.constants import DURATION_FORMAT
+from cddagl.i18n import proxy_gettext as _
 
 from PyQt5.QtCore import (
     Qt, QTimer
-    )
+)
 from PyQt5.QtWidgets import (
     QTabWidget, QGroupBox, QGridLayout, QLabel, QVBoxLayout, QPushButton
-    )
+)
 from cddagl.sql.functions import get_config_value, set_config_value
 
 logger = logging.getLogger('cddagl')
 
+
 class StatisticsTab(QTabWidget):
     def __init__(self):
         super(StatisticsTab, self).__init__()
-        
+
         self.game_start_time = None
         self.last_game_duration = get_config_value('last_played', 0)
 
@@ -59,9 +61,9 @@ class StatisticsTab(QTabWidget):
         self.reset_total_button.setEnabled(False)
 
     def game_ended(self):
-        total_game_duration = int(get_config_value('total_played',0))
+        total_game_duration = int(get_config_value('total_played', 0))
         total_game_duration += self.last_game_duration
-        set_config_value('last_played', self.last_game_duration)        
+        set_config_value('last_played', self.last_game_duration)
         set_config_value('total_played', total_game_duration)
         self.game_start_time = None
         self.game_timer.stop()
@@ -70,9 +72,10 @@ class StatisticsTab(QTabWidget):
 
     def game_tick(self):
         elapsed = int(datetime.now().timestamp() - self.game_start_time.timestamp())
-        self.last_game_duration = elapsed 
+        self.last_game_duration = elapsed
         self.current_played_group_box.set_label_text()
         self.total_game_duration_group_box.set_label_text()
+
 
 class CurrentPlayedGroupBox(QGroupBox):
     def __init__(self):
@@ -97,7 +100,7 @@ class CurrentPlayedGroupBox(QGroupBox):
     def reset_current(self):
         self.parentWidget().last_game_duration = 0
         set_config_value('last_played', 0)
-        self.set_label_text()        
+        self.set_label_text()
 
     def get_main_tab(self):
         return self.parentWidget().get_main_tab()
@@ -108,7 +111,7 @@ class CurrentPlayedGroupBox(QGroupBox):
         fmt_last_game_duration = strfdelta(last_game_duration, _(DURATION_FORMAT), inputtype='s')
         self.current_played_label.setText(fmt_last_game_duration)
         self.setTitle(_('Last game duration:'))
-    
+
     def set_label_text(self):
         last_game_duration = self.parentWidget().last_game_duration
         fmt_last_game_duration = strfdelta(last_game_duration, _(DURATION_FORMAT), inputtype='s')
@@ -130,14 +133,14 @@ class TotalPlayedGroupBox(QGroupBox):
         reset_total_button.setStyleSheet("font-size: 20px;")
         reset_total_button.clicked.connect(self.reset_total)
         layout.addWidget(reset_total_button, 1, 0, Qt.AlignHCenter)
-        self.reset_total_button = reset_total_button        
+        self.reset_total_button = reset_total_button
 
         self.setLayout(layout)
         self.set_text()
 
     def reset_total(self):
         set_config_value('total_played', 0)
-        self.set_label_text()          
+        self.set_label_text()
 
     def get_main_tab(self):
         return self.parentWidget().get_main_tab()
@@ -145,11 +148,11 @@ class TotalPlayedGroupBox(QGroupBox):
     def set_text(self):
         self.reset_total_button.setText(_('RESET'))
         total_game_duration = int(get_config_value('total_played', 0))
-        fmt_total_game_duration = strfdelta(total_game_duration, _(DURATION_FORMAT), inputtype='s')    
+        fmt_total_game_duration = strfdelta(total_game_duration, _(DURATION_FORMAT), inputtype='s')
         self.total_game_duration_label.setText(fmt_total_game_duration)
         self.setTitle(_('Total time in game:'))
-    
+
     def set_label_text(self):
         total_game_duration = int(get_config_value('total_played', 0)) + int(self.parentWidget().last_game_duration)
-        fmt_total_game_duration = strfdelta(total_game_duration, _(DURATION_FORMAT), inputtype='s')    
+        fmt_total_game_duration = strfdelta(total_game_duration, _(DURATION_FORMAT), inputtype='s')
         self.total_game_duration_label.setText(fmt_total_game_duration)

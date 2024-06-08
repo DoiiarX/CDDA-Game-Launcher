@@ -10,7 +10,8 @@ import shutil
 
 from PyQt5.QtCore import Qt, QStringListModel
 from PyQt5.QtGui import QFontDatabase, QFont
-from PyQt5.QtWidgets import QWidget, QGridLayout, QTabWidget, QVBoxLayout, QPushButton, QLabel, QSpinBox, QRadioButton, QGroupBox, QPlainTextEdit, QListView
+from PyQt5.QtWidgets import (QWidget, QGridLayout, QTabWidget, QVBoxLayout, QPushButton, QLabel, QSpinBox, QRadioButton,
+                             QGroupBox, QPlainTextEdit, QListView)
 from cddagl.sql.functions import (
     get_config_value, set_config_value)
 from cddagl.constants import get_data_path, get_cddagl_path
@@ -30,7 +31,7 @@ ASCII_ART_0 = """   █████████             █████     
                                                             ░░░░░░                                                         
 """
 
-ASCII_ART_1  = """
+ASCII_ART_1 = """
 ▓█████▄  ▒█████   ██▓     ██▓    ▄▄▄       ██▀███    ██████ 
 ▒██▀ ██▌▒██▒  ██▒▓██▒    ▓██▒   ▒████▄    ▓██ ▒ ██▒▒██    ▒ 
 ░██   █▌▒██░  ██▒▒██░    ▒██░   ▒██  ▀█▄  ▓██ ░▄█ ▒░ ▓██▄   
@@ -42,6 +43,7 @@ ASCII_ART_1  = """
    ░        ░ ░      ░  ░    ░  ░     ░  ░   ░           ░  
  ░                                                          
 """
+
 
 class FontsTab(QTabWidget):
     def __init__(self):
@@ -56,8 +58,7 @@ class FontsTab(QTabWidget):
         self.font_list_view = QListView()
         self.font_list_view.setEditTriggers(QListView.NoEditTriggers)
         self.font_families = self.load_fonts()
-        
-        
+
         # 创建字体设置的GroupBox并添加按钮
         font_settings_groupbox = QGroupBox("字体设置")
         font_buttons_layout = QVBoxLayout()
@@ -66,7 +67,7 @@ class FontsTab(QTabWidget):
         set_large_map_font_button = QPushButton("设为大地图字体")
         set_all_button = QPushButton("设为全部")
         reset_all_font_button = QPushButton("重置全部字体")
-        
+
         font_buttons_layout.addWidget(self.font_list_view)
         font_buttons_layout.addWidget(set_ui_font_button)
         font_buttons_layout.addWidget(set_map_font_button)
@@ -114,17 +115,17 @@ World, Hello!
         ascii_art_edit = QPlainTextEdit()
         ascii_art = ASCII_ART_0
         ascii_art += ASCII_ART_1
-        
+
         test_text_edit.setPlainText(test_text)
         test_text_edit.setReadOnly(True)
         test_text_edit.setStyleSheet("background-color: black; color: white;")
         self.test_text_edit = test_text_edit
-        
+
         ascii_art_edit.setPlainText(ascii_art)
         ascii_art_edit.setReadOnly(True)
         ascii_art_edit.setStyleSheet("font-size: 5px;background-color: black; color: white;")
         self.ascii_art_edit = ascii_art_edit
-        
+
         preview_layout.addWidget(test_text_edit)
         preview_layout.addWidget(ascii_art_edit)
         preview_groupbox.setLayout(preview_layout)
@@ -133,7 +134,7 @@ World, Hello!
         current_font_groupbox = QGroupBox("目前字体和备用字体")
         current_font_layout = QVBoxLayout()
         current_font_text_edit = QPlainTextEdit()
-        
+
         current_font_text_edit.setReadOnly(True)
         current_font_layout.addWidget(current_font_text_edit)
         current_font_groupbox.setLayout(current_font_layout)
@@ -172,7 +173,7 @@ World, Hello!
         self.font_list_view.selectionModel().currentChanged.connect(self.font_selected)
 
         self.load_font_settings()
-        
+
     def initialize_variables(self):
         # 初始化字体大小和是否启用的变量
         self.ui_font_size = None
@@ -181,7 +182,6 @@ World, Hello!
         self.font_mixture_enabled = False
         self.selected_font = None
         self.game_dir = None
-        
 
     def load_font_settings(self):
         """
@@ -193,14 +193,13 @@ World, Hello!
         返回:
             None
         """
-        
-        
+
         # 如果仍然没有游戏路径
         if not self.game_dir:
             return
-        
+
         # 配置文件路径
-        font_settings_path = os.path.normpath( os.path.join(self.game_dir, "config\\fonts.json"))
+        font_settings_path = os.path.normpath(os.path.join(self.game_dir, "config\\fonts.json"))
 
         # 确保文件路径存在
         if not os.path.exists(font_settings_path):
@@ -214,7 +213,6 @@ World, Hello!
         # 更新current_font_text_edit的文本
         self.update_current_font_text_edit()
 
-
     def update_current_font_text_edit(self):
         typeface = self.fontsjson.get("typeface", [])
         map_typeface = self.fontsjson.get("map_typeface", [])
@@ -225,8 +223,8 @@ World, Hello!
 大地图： {overmap_typeface[0]} => {overmap_typeface[1] if len(overmap_typeface) > 1 else ''}
 """
         self.current_font_text_edit.setPlainText(current_font_text)
-        
-    def load_fonts(self): 
+
+    def load_fonts(self):
         """
         加载字体到列表
         """
@@ -238,13 +236,13 @@ World, Hello!
             logger.debug(f'CUSTOM_FONT_DIRECTORY: {CUSTOM_FONT_DIRECTORY}')
         else:
             logger.debug("游戏目录未设置")
-        
+
         # 获取系统字体目录
         system_fonts_directory = get_windows_fonts_directory()
         font_filenames_system = load_font_filenames(system_fonts_directory)
 
         fontnamemaps = []
-        display_names = []  # 创建一个新的列表来存储用于显示的字体名称
+        display_names = []  # 创建一个新列表来存储用于显示的字体名称
         for filename in font_filenames_custom + font_filenames_system:
             font_id = QFontDatabase.addApplicationFont(filename)
             font_families = QFontDatabase.applicationFontFamilies(font_id)
@@ -253,7 +251,7 @@ World, Hello!
             else:
                 logger.error(f"无法获取字体名称： {font_families}")
                 continue
-            
+
             # 检查文件名是否来自 font_filenames_custom 列表
             display_name = font_name  # 储存原始的字体名称用于显示
             if filename in font_filenames_custom:
@@ -263,12 +261,11 @@ World, Hello!
             if font_name:
                 fontnamemaps.append([filename, font_name])
                 display_names.append(display_name)  # 只将原始字体名称添加到显示列表中
-        
+
         font_model = QStringListModel(display_names)
         self.font_list_view.setModel(font_model)
         self.font_list_view.selectionModel().currentChanged.connect(self.font_selected)
 
-        
         return fontnamemaps
 
     def update_font_settings(self, font_key, filepath):
@@ -306,8 +303,6 @@ World, Hello!
             else:
                 self.fontsjson[font_key] = [target_filepath]  # 如果原来不是列表，直接更新为一个新列表
 
-            
-            
         print(self.fontsjson)
 
         # # 更新命令行参数
@@ -318,12 +313,11 @@ World, Hello!
         # self.get_main_window().central_widget.settings_tab.launcher_settings_group_box.command_line_parameters_edit.setText(params)
 
         # 写入JSON并复制字体文件
-        write_fontsjson_to_path(self.game_dir, self.fontsjson)
-        copy_font_to_directory_by_name(self.game_dir ,filepath)
+        __write_fonts_json_to_path(self.game_dir, self.fontsjson)
+        copy_font_to_directory_by_name(self.game_dir, filepath)
 
         # 更新UI
         self.update_current_font_text_edit()
-
 
     def set_ui_font(self):
         """
@@ -411,7 +405,7 @@ World, Hello!
 
         self.test_text_edit.setStyleSheet(font_style)
         self.ascii_art_edit.setStyleSheet(ascii_font_style)
-        
+
         # todo
 
     def game_dir_changed(self, new_dir):
@@ -426,8 +420,8 @@ World, Hello!
         user_fonts_dir = os.path.join(new_dir, 'font')
 
         self.font_families = self.load_fonts()
-        self.load_font_settings() # 重新加载字体配置
-    
+        self.load_font_settings()  # 重新加载字体配置
+
     def load_repository(self):
         """加载字体库。"""
         self.repo_fonts = []  # 使用 repo_fonts 替换 repo_mods 以反映内容的改变
@@ -465,7 +459,7 @@ World, Hello!
             if isinstance(font_idents, list):
                 font_idents = set(font_idents)
             else:
-                font_idents = set((font_idents, ))
+                font_idents = set((font_idents,))
 
             self.check_and_confirm_font_installation(font_idents, selected_info)
 
@@ -530,7 +524,7 @@ World, Hello!
                 self.download_http_reply.downloadProgress.connect(self.download_dl_progress)
 
                 self.cancel_installation()
-                
+
     def cancel_installation(self):
         self.install_new_button.setText(_('Cancel font installation'))
         self.installed_lv.setEnabled(False)
@@ -540,7 +534,7 @@ World, Hello!
         self.get_soundpacks_tab().disable_tab()
         self.get_settings_tab().disable_tab()
         self.get_backups_tab().disable_tab()
-        
+
     def get_main_window(self):
         return self.parentWidget().parentWidget().parentWidget()
 
@@ -591,16 +585,17 @@ World, Hello!
             repository_selected = repository_selection.hasSelection()
 
         self.install_new_button.setEnabled(repository_selected)
-    
+
 
 def load_font_filenames(directory):
     try:
         # 获取目录中所有文件的文件名
         filenames = os.listdir(directory)
-        
+
         # 只选择特定类型的字体文件（比如.ttf或.otf），并且兼顾大小写
-        font_filenames = [os.path.join(directory, filename) for filename in filenames if filename.lower().endswith(('.ttf', '.otf', '.ttc'))]
-        
+        font_filenames = [os.path.join(directory, filename) for filename in filenames if
+                          filename.lower().endswith(('.ttf', '.otf', '.ttc'))]
+
         return font_filenames
     except Exception as e:
         logger.error(f"加载字体文件失败: {e}")
@@ -618,7 +613,8 @@ def load_font(font_path):
         logger.error(f"加载字体失败 '{font_path}': {e}")
     return None
 
-def write_fontsjson_to_path(dirpath, data, subpath='config'):
+
+def __write_fonts_json_to_path(dirpath, data, subpath='config'):
     try:
         # 检查路径是否存在，如果不存在则创建它
         if not os.path.exists(subpath):
@@ -638,6 +634,7 @@ def write_fontsjson_to_path(dirpath, data, subpath='config'):
         print(f"JSON数据已成功写入到路径: {json_path}")
     except Exception as e:
         print(f"写入JSON数据时出错: {str(e)}")
+
 
 def copy_font_to_directory_by_name(taget_path, font_path, target_subdirectory='data/font'):
     # 目标目录
@@ -664,10 +661,11 @@ def copy_font_to_directory_by_name(taget_path, font_path, target_subdirectory='d
     except Exception as e:
         print(f"复制字体 '{font_name}' 到目标目录时发生错误: {str(e)}")
 
+
 def get_windows_fonts_directory():
     # 获取系统文件夹路径
     windir = os.environ.get('WINDIR', 'C:\\Windows')
-    
+
     fonts_directory = os.path.join(windir, 'Fonts')
 
     return fonts_directory
@@ -675,23 +673,23 @@ def get_windows_fonts_directory():
 # def update_userdir_param(params, userdir_path):
 #     """
 #     替换或添加`--userdir`参数到给定的命令行参数字符串中。
-    
+
 #     如果`params`字符串中已存在`--userdir`参数，则替换其路径；
 #     否则，向`params`添加`--userdir`参数和指定的路径。
-    
+
 #     参数:
 #     - params: 原始的命令行参数字符串。
 #     - userdir_path: 要设置的`--userdir`参数的路径。
-    
+
 #     返回:
 #     - 更新后的命令行参数字符串。
 #     """
 #     # 将路径中的反斜杠转义，以避免正则表达式解析错误
 #     safe_userdir_path = userdir_path.replace('\\', '\\\\')
-    
+
 #     # 构建正则表达式以匹配--userdir参数
 #     userdir_pattern = re.compile(r'--userdir\s+"[^"]*"')
-    
+
 #     # 检查params中是否已存在--userdir参数
 #     match = userdir_pattern.search(params)
 #     if match:

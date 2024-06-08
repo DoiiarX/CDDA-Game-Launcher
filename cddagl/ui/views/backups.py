@@ -46,7 +46,7 @@ class BackupsTab(QTabWidget):
         self.backup_compressing = False
 
         self.compressing_timer = None
-        self.scale_factor = 0 # Number of bits to shift file size right so we don't overflow the QProgressBar
+        self.scale_factor = 0 # Number of bits to shift file size right, so we don't overflow the QProgressBar
         self.filestep = 0 # File counter so we don't update the progress bar every single file
 
         current_backups_gb = QGroupBox()

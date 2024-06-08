@@ -3,14 +3,14 @@
 # SPDX-License-Identifier: MIT
 
 import logging
-from PyQt5.QtCore import QSize, Qt, QUrl
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTabWidget, QVBoxLayout
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage, QWebEngineSettings
-from PyQt5.QtWebEngineCore import QWebEngineHttpRequest
 import sys
-from PyQt5.QtGui import QKeySequence
+
+from PyQt5.QtCore import Qt, QUrl
+from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage, QWebEngineSettings
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTabWidget, QVBoxLayout
 
 logger = logging.getLogger('cddagl')
+
 
 class CustomWebEnginePage(QWebEnginePage):
     def __init__(self, browser, parent=None):
@@ -30,14 +30,13 @@ class CDDAGuideTab(QTabWidget):
         # 创建浏览器视图
         self.browser = QWebEngineView(self)
         self.browser.setPage(CustomWebEnginePage(self.browser))
-        
+
         try:
             # 设置初始页面
             self.browser.setUrl(QUrl("https://cdda.doiiars.com/?lang=zh_CN"))
 
             # 设置用户代理
             user_agent = "cddagl"  # 你可以设置自己的用户代理字符串
-            user_agent = "cddagl"
             self.browser.page().profile().setHttpUserAgent(user_agent)
 
             settings = self.browser.settings()
@@ -90,9 +89,6 @@ class CDDAGuideTab(QTabWidget):
         else:
             super().keyPressEvent(event)
 
-
-
-
     def go_back(self):
         if self.browser.page().action(QWebEnginePage.Back).isEnabled():
             self.browser.back()
@@ -100,7 +96,7 @@ class CDDAGuideTab(QTabWidget):
     def go_forward(self):
         if self.browser.page().action(QWebEnginePage.Forward).isEnabled():
             self.browser.forward()
-    
+
     def set_text(self):
         pass
 
