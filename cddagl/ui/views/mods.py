@@ -18,7 +18,7 @@ from os import scandir
 from urllib.parse import urljoin, urlencode
 
 import rarfile
-from PyQt5.QtCore import Qt, QTimer, QUrl, QFileInfo, QStringListModel
+from PyQt5.QtCore import Qt, QTimer, QUrl, QFileInfo, QStringListModel, pyqtSignal, QThread
 from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest
 from PyQt5.QtWidgets import (
     QWidget, QGridLayout, QGroupBox, QVBoxLayout, QLabel, QLineEdit, QPushButton, QProgressBar, QTextBrowser,
@@ -40,6 +40,26 @@ logger = logging.getLogger('cddagl')
 
 rarfile.UNRAR_TOOL = get_cddagl_path('UnRAR.exe')
 
+
+class ModsLoader(QThread):
+    finished = pyqtSignal()  # 发出信号，包含mods.yaml文件路径
+
+    def __init__(self, cons):
+        super().__init__()
+        self.cons = cons
+
+    def run(self):
+        """后台线程执行的任务：尝试从远程获取mods.yaml文件，失败则使用本地文件"""
+        try:
+            response = requests.get(self.cons.GITHUB_REST_API_URL + self.cons.REMOTE_MODS_URL)
+            response.raise_for_status()
+            with open(get_data_path('mods.yaml'), 'wb') as f:
+                f.write(response.content)
+            file_path = get_data_path('mods.yaml')
+        except requests.RequestException:
+            logger.warning("无法从远程获取 mods.yaml 文件，使用本地文件")
+            file_path = get_data_path('mods.yaml')
+        self.finished.emit()  # 发送完成信号，附带文件路径
 
 class ModsTab(QWidget):
     def __init__(self):
@@ -261,7 +281,11 @@ class ModsTab(QWidget):
 
         self.setLayout(layout)
 
-        self.load_repository()
+        # 启动后台线程加载mods.yaml文件
+        self.loader = ModsLoader(cons)
+        self.loader.finished.connect(self.__load_repository)
+        self.loader.start()
+
         self.set_text()
 
     def set_text(self):
@@ -364,19 +388,11 @@ class ModsTab(QWidget):
 
         self.install_new_button.setEnabled(repository_selected)
     
-    def get_mods_yaml_file(self):
+    def __get_mods_yaml_file(self):
         """尝试从远程获取 mods.yaml 文件，失败则使用本地文件"""
-        try:
-            response = requests.get(cons.GITHUB_REST_API_URL + cons.REMOTE_MODS_URL)
-            response.raise_for_status()
-            with open(get_data_path('mods.yaml'), 'wb') as f:
-                f.write(response.content)
-            return get_data_path('mods.yaml')
-        except requests.RequestException:
-            logger.warning("无法从远程获取 mods.yaml 文件，使用本地文件")
-            return get_data_path('mods.yaml')
+        return get_data_path('mods.yaml')
 
-    def load_repository(self):
+    def __load_repository(self):
         """加载存储库。"""
         self.repo_mods = []
 
@@ -388,7 +404,7 @@ class ModsTab(QWidget):
         self.repository_lv.selectionModel().currentChanged.connect(
             self.repository_selection)
 
-        yaml_file = self.get_mods_yaml_file()  # 获取mods.yaml文件的路径
+        yaml_file = self.__get_mods_yaml_file()  # 获取mods.yaml文件的路径
 
         if os.path.isfile(yaml_file):  # 检查文件是否存在
             with open(yaml_file, 'r', encoding='utf8') as f:  # 打开YAML文件

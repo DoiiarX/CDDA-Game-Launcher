@@ -18,7 +18,7 @@ from os import scandir
 from urllib.parse import urljoin, urlencode
 
 import rarfile
-from PyQt5.QtCore import Qt, QTimer, QUrl, QFileInfo, QStringListModel
+from PyQt5.QtCore import Qt, QTimer, QUrl, QFileInfo, QStringListModel, QThread, pyqtSignal
 from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest
 from PyQt5.QtWidgets import (
     QWidget, QGridLayout, QGroupBox, QVBoxLayout, QLabel, QLineEdit, QPushButton,
@@ -38,6 +38,26 @@ logger = logging.getLogger('cddagl')
 
 rarfile.UNRAR_TOOL = get_cddagl_path('UnRAR.exe')
 
+
+class SoundpacksLoader(QThread):
+    finished = pyqtSignal()  # 发出信号，包含mods.yaml文件路径
+
+    def __init__(self, cons):
+        super().__init__()
+        self.cons = cons
+
+    def run(self):
+        """后台线程执行的任务：尝试从远程获取mods.yaml文件，失败则使用本地文件"""
+        try:
+            response = requests.get(self.cons.GITHUB_REST_API_URL + self.cons.REMOTE_SOUNDPACKS_URL)
+            response.raise_for_status()
+            with open(get_data_path('soundpacks.yaml'), 'wb') as f:
+                f.write(response.content)
+            file_path = get_data_path('soundpacks.yaml')
+        except requests.RequestException:
+            logger.warning("无法从远程获取 soundpacks.yaml 文件，使用本地文件")
+            file_path = get_data_path('soundpacks.yaml')
+        self.finished.emit()  # 发送完成信号，附带文件路径
 
 class SoundpacksTab(QTabWidget):
     def __init__(self):
@@ -216,7 +236,11 @@ class SoundpacksTab(QTabWidget):
 
         self.setLayout(layout)
 
-        self.load_repository()
+        # 启动后台线程加载soundpacks.yaml
+        self.loader = SoundpacksLoader(cons)
+        self.loader.finished.connect(self.__load_repository)
+        self.loader.start()
+
         self.set_text()
 
     def set_text(self):
@@ -306,17 +330,9 @@ class SoundpacksTab(QTabWidget):
         
     def get_soundpacks_yaml_file(self):
         """尝试从远程获取 mods.yaml 文件，失败则使用本地文件"""
-        try:
-            response = requests.get(cons.GITHUB_REST_API_URL + cons.REMOTE_SOUNDPACKS_URL)
-            response.raise_for_status()
-            with open(get_data_path('soundpacks.yaml'), 'wb') as f:
-                f.write(response.content)
-            return get_data_path('soundpacks.yaml')
-        except requests.RequestException:
-            logger.warning("无法从远程获取 soundpacks.yaml 文件，使用本地文件")
-            return get_data_path('soundpacks.yaml')
+        return get_data_path('soundpacks.yaml')
 
-    def load_repository(self):
+    def __load_repository(self):
         self.repo_soundpacks = []
 
         self.install_new_button.setEnabled(False)
