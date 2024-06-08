@@ -368,9 +368,13 @@ class ExceptionWindow(QWidget):
 
         report_label = QLabel()
         report_label.setOpenExternalLinks(True)
-        report_label.setText(_('Please help us make a better launcher '
-            '<a href="{url}">by reporting this issue on GitHub</a>.').format(
-                url=html.escape(report_url)))
+        report_label.setText(
+            (_('Please help us make a better launcher '
+              '<a href="{url}">by reporting this issue on GitHub</a>. ') +
+              '交流反馈QQ群：<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=h30pFZuOws8XtP9kR13807pV9PsQQ_Gn&authKey=82bXfkY29udyKMXwVd6B2bd%2BOrsIo8rtPx7myJFH%2Fjhh%2BO5pNJlDqtZBo4wXM7R3&noverify=0&group_code=491708665">491708665 (一键加群)</a>').format(
+                url=html.escape(report_url))
+        )
+
         layout.addWidget(report_label, 2, 0)
         self.report_label = report_label
 

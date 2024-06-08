@@ -17,6 +17,8 @@ SPDX-License-Identifier: MIT
 
 关注[Doiiars](https://space.bilibili.com/1036711705)的[Bilibili 账号](https://space.bilibili.com/1036711705)，后续可能在Bilibili上更新视频教程。
 
+**(交流反馈QQ群：[491708665 (一键加群)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=h30pFZuOws8XtP9kR13807pV9PsQQ_Gn&authKey=82bXfkY29udyKMXwVd6B2bd%2BOrsIo8rtPx7myJFH%2Fjhh%2BO5pNJlDqtZBo4wXM7R3&noverify=0&group_code=491708665))**
+
 ![GitHub 工作流状态（master 分支）](https://img.shields.io/github/actions/workflow/status/DoiiarX/CDDA-Game-Launcher/build.yml?branch=master)
 ![GitHub 工作流状态（develop 分支）](https://img.shields.io/github/actions/workflow/status/DoiiarX/CDDA-Game-Launcher/build.yml?branch=develop)
 

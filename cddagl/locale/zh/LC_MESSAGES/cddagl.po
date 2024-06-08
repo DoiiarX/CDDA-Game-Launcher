@@ -359,7 +359,7 @@ msgstr "2. 在该页面下载 {name} 并等待下载完成。"
 
 #: cddagl/ui/views/dialogs.py:71
 msgid "3. Select the downloaded archive."
-msgstr "3. 选择已下载的存档。"
+msgstr "3. 选择已下载的压缩包。"
 
 #: cddagl/ui/views/dialogs.py:96
 msgid "Install this {name}"
@@ -563,11 +563,11 @@ msgstr ""
 "\n"
 "### 启动器如何更新我的游戏？\n"
 "\n"
-"* 启动器会下载新版本的存档。\n"
+"* 启动器会下载新版本的压缩包。\n"
 "* 如果存在 `previous_version` 子目录，启动器会将其移到回收站。\n"
 "* 启动器会将游戏目录中的所有内容移到 `previous_version` 子目录中。\n"
 "* 启动器会在游戏目录中提取下载的存档。\n"
-"* 启动器会检查 `previous_version` 目录中的内容，并从中复制保存、模组、贴图包、音效包和其他有用的文件到实际游戏目录中。它会假设包含在下载存档中的模组是最新版本，并通过比较它们的唯一标识值来保留它们。\n"
+"* 启动器会检查 `previous_version` 目录中的内容，并从中复制保存、模组、贴图包、音效包和其他有用的文件到实际游戏目录中。它会假设包含在下载压缩包中的模组是最新版本，并通过比较它们的唯一标识值来保留它们。\n"
 "\n"
 "### 我认为启动器刚刚删除了我的文件。我该怎么办？\n"
 "\n"
@@ -1111,13 +1111,13 @@ msgstr "取消安装"
 #: cddagl/ui/views/mods.py:659 cddagl/ui/views/soundpacks.py:448
 #: cddagl/ui/views/soundpacks.py:611
 msgid "Testing downloaded file archive"
-msgstr "测试下载文件存档"
+msgstr "测试下载的压缩包文件"
 
 #: cddagl/ui/views/main.py:2137 cddagl/ui/views/mods.py:533
 #: cddagl/ui/views/mods.py:704 cddagl/ui/views/soundpacks.py:495
 #: cddagl/ui/views/soundpacks.py:657
 msgid "Downloaded archive is invalid"
-msgstr "下载档案是无效的"
+msgstr "下载压缩包是无效的"
 
 #: cddagl/ui/views/main.py:2147
 msgid "Could not download game"
@@ -1155,7 +1155,7 @@ msgstr "解压 {0}"
 
 #: cddagl/ui/views/main.py:2375
 msgid "Cannot extract game archive"
-msgstr "无法提取游戏存档"
+msgstr "无法提取游戏压缩包"
 
 #: cddagl/ui/views/main.py:2377
 msgid ""
@@ -1164,7 +1164,7 @@ msgid ""
 "<p>It received the following error from the operating system: {error}</p>"
 msgstr ""
 "\n"
-"<p>启动器无法提取游戏存档。</p>\n"
+"<p>启动器无法提取游戏压缩包。</p>\n"
 "<p>它从操作系统收到了以下错误：{error}</p>"
 
 #: cddagl/ui/views/main.py:2454
@@ -1441,32 +1441,32 @@ msgstr "取消mod安装"
 
 #: cddagl/ui/views/mods.py:479
 msgid "Could not find downloaded file archive"
-msgstr "找不到下载的文件存档"
+msgstr "找不到下载的压缩包"
 
 #: cddagl/ui/views/mods.py:505 cddagl/ui/views/mods.py:539
 #: cddagl/ui/views/mods.py:667 cddagl/ui/views/mods.py:710
 #: cddagl/ui/views/soundpacks.py:456 cddagl/ui/views/soundpacks.py:501
 #: cddagl/ui/views/soundpacks.py:619 cddagl/ui/views/soundpacks.py:663
 msgid "Selected file is a bad archive file"
-msgstr "选定的文件是一个糟糕的存档文件"
+msgstr "选定的文件是一个损坏的压缩包文件"
 
 #: cddagl/ui/views/mods.py:512 cddagl/ui/views/mods.py:674
 #: cddagl/ui/views/soundpacks.py:463 cddagl/ui/views/soundpacks.py:626
 msgid "Selected file is a password protected archive file"
-msgstr "选择的文件是一个密码保护归档文件"
+msgstr "选择的文件是一个受密码保护的压缩包文件"
 
 #: cddagl/ui/views/mods.py:575 cddagl/ui/views/soundpacks.py:536
 msgid "Soundpack installation cancelled"
-msgstr "Soundpack安装取消"
+msgstr "音效包安装已取消"
 
 #: cddagl/ui/views/mods.py:652
 msgid "Could not find downloaded archive ({file})"
-msgstr "找不到下载归档文件 ({file})"
+msgstr "找不到下载的压缩包文件 ({file})"
 
 #: cddagl/ui/views/mods.py:692 cddagl/ui/views/soundpacks.py:483
 #: cddagl/ui/views/soundpacks.py:645
 msgid "Unknown downloaded archive format ({extension})"
-msgstr "未知的下载档案格式({extension})"
+msgstr "未知的下载的压缩包格式({extension})"
 
 #: cddagl/ui/views/mods.py:884
 msgid "Finding the mod(s)"
@@ -1474,7 +1474,7 @@ msgstr "正在查找模组"
 
 #: cddagl/ui/views/mods.py:915
 msgid "Mod installation cancelled - There is no mod in the downloaded archive"
-msgstr "模组安装已取消 - 下载的存档中没有模组"
+msgstr "模组安装已取消 - 下载的压缩包中没有模组"
 
 #: cddagl/ui/views/mods.py:927
 msgid ""
@@ -1670,7 +1670,7 @@ msgstr "搜索音效包"
 msgid ""
 "Soundpack installation cancelled - There is no soundpack in the "
 "downloaded archive"
-msgstr "音效包安装取消 - 已下载的存档中没有 Soundpack "
+msgstr "音效包安装取消 - 已下载的压缩包中没有 Soundpack "
 
 #: cddagl/ui/views/soundpacks.py:863
 msgid ""
