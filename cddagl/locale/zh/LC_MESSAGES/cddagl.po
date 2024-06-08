@@ -7,7 +7,7 @@
 # Translators:
 # Doiiars <doiiars@qq.com>, 2019
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: cddagl 1.4.3\n"
@@ -166,7 +166,6 @@ msgid "Backup saves after game end"
 msgstr "在游戏结束后备份存档"
 
 #: cddagl/ui/views/backups.py:220
-#, fuzzy
 msgid "Backup saves before updating"
 msgstr "在游戏启动前备份存档"
 
@@ -260,7 +259,6 @@ msgid "auto"
 msgstr "auto"
 
 #: cddagl/ui/views/backups.py:811
-#, fuzzy
 msgid "Game directory not found"
 msgstr "保存目录未找到"
 
@@ -755,24 +753,20 @@ msgid "Unknown"
 msgstr "未知"
 
 #: cddagl/ui/views/main.py:220
-#, fuzzy
 msgid "Directory:"
 msgstr "目录"
 
 #: cddagl/ui/views/main.py:221 cddagl/ui/views/mods.py:269
-#, fuzzy
 msgid "Version:"
-msgstr "版本:"
+msgstr "版本："
 
 #: cddagl/ui/views/main.py:222
-#, fuzzy
 msgid "Build:"
 msgstr "Build"
 
 #: cddagl/ui/views/main.py:223
-#, fuzzy
 msgid "Saves:"
-msgstr "存档:"
+msgstr "存档："
 
 #: cddagl/ui/views/main.py:225
 msgid ""
@@ -860,9 +854,8 @@ msgstr "游戏目录"
 
 #: cddagl/ui/views/main.py:624 cddagl/ui/views/main.py:631
 #: cddagl/ui/views/main.py:638 cddagl/ui/views/main.py:663
-#, fuzzy
 msgid "Unknown version - Reason:"
-msgstr "未知的版本 - 原因:"
+msgstr "未知的版本 - 原因："
 
 #: cddagl/ui/views/main.py:625
 msgid "CDDA Game Launcher files cannot be inside Game directory!"
@@ -950,9 +943,8 @@ msgid ""
 msgstr "没有可执行下载的archive中找到。"
 
 #: cddagl/ui/views/main.py:1353
-#, fuzzy
 msgid "Branch:"
-msgstr "Branch:"
+msgstr "分支："
 
 #: cddagl/ui/views/main.py:1354
 msgid "Stable"
@@ -963,7 +955,6 @@ msgid "Experimental"
 msgstr "实验版"
 
 #: cddagl/ui/views/main.py:1356
-#, fuzzy
 msgid "Platform:"
 msgstr "平台"
 
@@ -976,12 +967,10 @@ msgid "Windows x86"
 msgstr "Windows x86"
 
 #: cddagl/ui/views/main.py:1359
-#, fuzzy
 msgid "Build type:"
-msgstr "Build"
+msgstr "构建类型："
 
 #: cddagl/ui/views/main.py:1362
-#, fuzzy
 msgid "Available builds:"
 msgstr "可用的版本"
 
@@ -1053,7 +1042,6 @@ msgid "I will choose or create a different directory"
 msgstr "我将选择或创建一个不同的目录"
 
 #: cddagl/ui/views/main.py:1666
-#, fuzzy
 msgid "before_update"
 msgstr "检查更新"
 
@@ -1242,9 +1230,8 @@ msgid "Could not find remote builds"
 msgstr "找不到远程build"
 
 #: cddagl/ui/views/main.py:3280
-#, fuzzy
 msgid "<h3>Can't reach changelog...</h3>"
-msgstr "<h3>解析更新日志中...</h3>"
+msgstr "<h3>未能解析更新日志...</h3>"
 
 #: cddagl/ui/views/main.py:3399 cddagl/ui/views/main.py:3636
 #, python-format
@@ -1374,7 +1361,6 @@ msgid "Details"
 msgstr "细节"
 
 #: cddagl/ui/views/mods.py:256
-#, fuzzy
 msgid "Ident:"
 msgstr "ID:"
 
@@ -1538,7 +1524,6 @@ msgid "System language or best match ({locale})"
 msgstr "系统语言或最佳匹配 ({locale})"
 
 #: cddagl/ui/views/settings.py:162
-#, fuzzy
 msgid "Command line parameters:"
 msgstr "命令行参数"
 
@@ -1547,7 +1532,6 @@ msgid "Keep the launcher opened after launching the game"
 msgstr "在启动游戏后保持启动器打开"
 
 #: cddagl/ui/views/settings.py:165
-#, fuzzy
 msgid "Language:"
 msgstr "语言:"
 
@@ -1711,7 +1695,6 @@ msgid "Soundpack deleted"
 msgstr "音效包已删除"
 
 #: cddagl/ui/views/statistics.py:106 cddagl/ui/views/statistics.py:146
-#, fuzzy
 msgid "RESET"
 msgstr "重置"
 
@@ -1740,7 +1723,6 @@ msgid "&Frequently asked questions (FAQ)"
 msgstr "常见问题（FAQ）"
 
 #: cddagl/ui/views/tabbed.py:81 cddagl/ui/views/tabbed.py:120
-#, fuzzy
 msgid "&Game issue"
 msgstr "游戏问题"
 
@@ -1811,12 +1793,10 @@ msgid "Fonts"
 msgstr "字体"
 
 #: cddagl/ui/views/tabbed.py:506
-#, fuzzy
 msgid "Progress:"
 msgstr "进度："
 
 #: cddagl/ui/views/tabbed.py:535
-#, fuzzy
 msgid "Speed:"
 msgstr "速度："
 
