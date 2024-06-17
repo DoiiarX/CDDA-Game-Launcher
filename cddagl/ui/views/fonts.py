@@ -586,6 +586,9 @@ World, Hello!
 
         self.install_new_button.setEnabled(repository_selected)
 
+    def set_text(self):
+        pass
+
 
 def load_font_filenames(directory):
     try:

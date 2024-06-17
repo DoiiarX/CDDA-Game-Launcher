@@ -40,7 +40,6 @@ logger = logging.getLogger('cddagl')
 
 rarfile.UNRAR_TOOL = get_cddagl_path('UnRAR.exe')
 
-
 class ModsLoader(QThread):
     finished = pyqtSignal()  # 发出信号，包含mods.yaml文件路径
 
@@ -60,6 +59,44 @@ class ModsLoader(QThread):
             logger.warning("无法从远程获取 mods.yaml 文件，使用本地文件")
             file_path = get_data_path('mods.yaml')
         self.finished.emit()  # 发送完成信号，附带文件路径
+
+
+
+def find_mods_in_directory(directory):
+    """
+    查找指定目录及其子目录中的modinfo.json文件所在的目录。
+
+    参数:
+    directory (str): 要扫描的根目录路径。
+
+    返回:
+    set: 包含所有包含modinfo.json文件的目录路径的集合。
+
+    逻辑:
+    1. 初始化一个集合`mod_dirs`用于存储包含modinfo.json文件的目录路径。
+    2. 使用双端队列`next_scans`来存储待扫描的目录，初始包含根目录路径。
+    3. 当`next_scans`不为空时，执行以下操作：
+        a. 从`next_scans`中弹出一个目录进行扫描。
+        b. 使用`os.scandir`扫描当前目录。
+        c. 对于每个扫描到的项目：
+            i. 如果是目录，则将其路径添加到`next_scans`。
+            ii. 如果是文件且文件名为`modinfo.json`（不区分大小写），
+                则将其所在目录路径添加到`mod_dirs`。
+    4. 返回包含所有包含modinfo.json文件的目录路径的集合。
+    """
+    mod_dirs = set()
+    next_scans = deque([directory])
+
+    while next_scans:
+        with os.scandir(next_scans.popleft()) as current_scan:
+            for entry in current_scan:
+                if entry.is_dir():
+                    next_scans.append(entry.path)
+                elif entry.is_file() and os.path.basename(entry.path).lower() == 'modinfo.json':
+                    mod_dirs.add(os.path.dirname(entry.path))
+
+    return mod_dirs
+
 
 class ModsTab(QWidget):
     def __init__(self):
@@ -387,7 +424,7 @@ class ModsTab(QWidget):
             repository_selected = repository_selection.hasSelection()
 
         self.install_new_button.setEnabled(repository_selected)
-    
+
     def __get_mods_yaml_file(self):
         """尝试从远程获取 mods.yaml 文件，失败则使用本地文件"""
         return get_data_path('mods.yaml')
@@ -974,7 +1011,7 @@ class ModsTab(QWidget):
         status_bar = self.status_bar
         status_bar.showMessage(_('Finding the mod(s)'))
 
-        mod_dirs = self.__find_mods_in_directory(self.extract_dir)
+        mod_dirs = find_mods_in_directory(self.extract_dir)
 
         if not mod_dirs:
             status_bar.showMessage(_('Mod installation cancelled - No mod found in the downloaded archive'))
