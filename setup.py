@@ -47,8 +47,13 @@ def get_setup_dir():
 
 
 def get_version():
-    with open(get_setup_dir() / 'cddagl' / 'VERSION', encoding='utf-8') as version_file:
-        return version_file.read().strip()
+    try:
+        with open(get_setup_dir() / 'cddagl' / 'VERSION', encoding='utf-8') as version_file:
+            return version_file.read().strip()
+    except FileNotFoundError:
+        return '0.0.0'
+    except Exception as e:
+        print('Error while reading version: {}'.format(e), file=sys.stderr)
 
 
 def log(msg):
