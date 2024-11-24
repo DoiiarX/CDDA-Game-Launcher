@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-setuptools<65.0.0
+setuptools
 PyYAML
 SQLAlchemy
 alembic
