@@ -58,6 +58,16 @@ BASE_ASSETS = {
 }
 
 STABLE_ASSETS = {
+    '0.H': {
+            'name': '0.G Herbert',
+            'number': '2023-03-01-0054',
+            'released_on': '2023-03-01T00:54:27Z',
+            'github_release': 'https://github.com/CleverRaven/Cataclysm-DDA/releases/tag/0.H-RELEASE',
+            'Tiles': {
+                'x64': 'https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-windows-with-graphics-and-sounds-x64-2024-11-23-1857.zip',
+                'x86': 'https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-windows-with-graphics-and-sounds-x64-2024-11-23-1857.zip'
+            }
+        },
     '0.G': {
         'name': '0.G Gaiman',
         'number': '2023-03-01-0054',
@@ -171,6 +181,34 @@ STABLE_ASSETS = {
 }
 
 STABLE_CHANGELOG = '''
+<h3>0.H Herbert</h3>
+
+<div data-pjax="true" data-test-selector="body-content" data-view-component="true" class="markdown-body my-3">
+<p>I'm proud to announce that the Cataclysm: Dark Days Ahead 0.H "Herbert" release is here!<br>
+With an 11 month Gestation (before forking) and a 10 month delivery (after forking), we once again utterly failed to limit the scope of work with a release, the 0.H development process has been the longest in many releases, packing in thousands of new pieces of content, massive performance improvements, and IMO more polish than we've ever seen in a DDA release. A huge group of about 450 people contributed to this release, about 200 for the first time this release. All together we changed about 12 million lines of code and data across about 5,500 files, adding about 5,000 game entities in the core game and another 5,000 in mods. This time around we handled the release process differently, following a more traditional process where we called 0.H "feature complete" all the way back in January of 2024 and moved it to a dedicated fork for bugfixing.<br>
+Since then we've created new infrastructure to manage the stabilization process, fixed many many bugs, and backported a limited number of key features from the experimental branch. Whether this new approach really hits its stride is yet to be seen, but I'm hopeful next cycle can be shorter now that the infrastructure is in place.</p>
+<p>Feature wise, we've seen the addition of biomes, where traveling East now leads to larger cities to a point, then the lands ends in an ocean. Travelling West leads to sparser human settlements and more wilderness. Portal storms now spawn and move around on the map, you can either hunker down or move to avoid them (or chase them if you're so inclined), and an unprecedented amount of new and interesting content has been added to their chaotic mix.<br>
+After years of hard work, 3D vision has improved greatly bugs are few and far between now, and thanks to this feature we can see a lot more interactivity between Z levels. It still defaults off, but you don't need to be afraid of it. Our accidental bespoke scripting framework, the EOC system, has been greatly expanded and many, many features have been overhauled to take advantage of it. This allows an enormous flexibility of events in both mainline and mods without ever touching a compiler. Multiple new boss-tier encounters have been added for late game challenge, though I don't want to spoil them here. Now you will know why you fear the night. The number of proficiencies has increased greatly for this version, roughly doubling the number of proficiencies you can learn, all with unique effects.  We've seen an expansion of the proficiency framework in some of the directions desired initially, allowing proficiencies to confer more than just crafting bonuses. Practice actions have also filled out, providing a smooth path for skill gain instead of grinding crafting or other activities. This version should see an end to repeatedly crafting and uncrafting a simple object to grind skills, allowing you to automate the process to represent your character studying and practicing, spending character time but not so much player time. You'll also notice other savings in player time, we've found a number of places to speed up key code and drastically reduce waiting times, making for a much more responsive experience.<br>
+Try it out. It's the best DDA yet.</p>
+<p>For more details on what all has changed, you can take a look here (but it's still not everything, because there's just so much).<br>
+<a href="https://github.com/CleverRaven/Cataclysm-DDA/blob/0.H-branch/data/changelog.txt">https://github.com/CleverRaven/Cataclysm-DDA/blob/0.H-branch/data/changelog.txt</a></p></div>
+
+<h4 id="0h-release-download-links">0.H-RELEASE Download Links</h4>
+<ul>
+<li><a href="https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-android-bundle-2024-11-23-1857.aab">cdda-android-bundle-2024-11-23-1857.aab</a></li>
+<li><a href="https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-android-x32-2024-11-23-1857.apk">cdda-android-x32-2024-11-23-1857.apk</a></li>
+<li><a href="https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-android-x64-2024-11-23-1857.apk">cdda-android-x64-2024-11-23-1857.apk</a></li>
+<li><a href="https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-linux-objectcreator-x64-2024-11-23-0334.tar.gz">cdda-linux-objectcreator-x64-2024-11-23-0334.tar.gz</a></li>
+<li><a href="https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-linux-terminal-only-x64-2024-11-23-1857.tar.gz">cdda-linux-terminal-only-x64-2024-11-23-1857.tar.gz</a></li>
+<li><a href="https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-linux-with-graphics-and-sounds-x64-2024-11-23-1857.tar.gz">cdda-linux-with-graphics-and-sounds-x64-2024-11-23-1857.tar.gz</a></li>
+<li><a href="https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-linux-with-graphics-x64-2024-11-23-1857.tar.gz">cdda-linux-with-graphics-x64-2024-11-23-1857.tar.gz</a></li>
+<li><a href="https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-osx-terminal-only-universal-2024-11-23-1857.dmg">cdda-osx-terminal-only-universal-2024-11-23-1857.dmg</a></li>
+<li><a href="https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-osx-with-graphics-universal-2024-11-23-1857.dmg">cdda-osx-with-graphics-universal-2024-11-23-1857.dmg</a></li>
+<li><a href="https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-wasm-2024-11-23-0334.zip">cdda-wasm-2024-11-23-0334.zip</a></li>
+<li><a href="https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-windows-with-graphics-and-sounds-x64-2024-11-23-1857.zip">cdda-windows-with-graphics-and-sounds-x64-2024-11-23-1857.zip</a></li>
+<li><a href="https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-windows-with-graphics-x64-2024-11-23-1857.zip">cdda-windows-with-graphics-x64-2024-11-23-1857.zip</a></li>
+</ul>
+
 <h3>0.G Gaiman</h3>
 
 <p>We are proud to announce that 0.G “Gaiman” stable release has arrived!  Two years have passed since the release of the stable version 0.F “Frank”, two years of unprecedented turmoil in the real world that delayed our planned release of the next stable. These two years have seen many IRL job changes among the dev team,  new contributors to CleverRaven, and a couple of babies joining members’ families.  The 0.G release is more than double the size of the 0.F release, a distinction that we keep trying and failing to avoid. Even more than previous stable versions, this release features a massive range of bugfixes, code and content additions, and new features. 10,293 new game entities were added, 11,643,312 lines of source code were inserted, and 5,022,361 lines were deleted.  This included several new language translations, multiple new tilesets; including some isometric tileset demos, and multiple new mods in addition to base game content and features.</p>
