@@ -52,6 +52,7 @@ jobs:
         python --version
         pip --version
         pip install setuptools
+        pip install Babel
         pip install -r requirements.txt
         pip install PyInstaller html5lib cssselect
     - name: Install dependencies
