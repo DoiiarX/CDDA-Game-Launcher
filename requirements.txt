@@ -17,6 +17,6 @@ Werkzeug
 pypiwin32
 pywin32
 httpx
-pylzma
+#pylzma
 requests
 PyQtWebEngine
