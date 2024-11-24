@@ -59,7 +59,7 @@ BASE_ASSETS = {
 
 STABLE_ASSETS = {
     '0.H': {
-            'name': '0.G Herbert',
+            'name': '0.H Herbert',
             'number': '2023-03-01-0054',
             'released_on': '2023-03-01T00:54:27Z',
             'github_release': 'https://github.com/CleverRaven/Cataclysm-DDA/releases/tag/0.H-RELEASE',
