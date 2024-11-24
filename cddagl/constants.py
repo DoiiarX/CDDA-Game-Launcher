@@ -60,8 +60,8 @@ BASE_ASSETS = {
 STABLE_ASSETS = {
     '0.H': {
             'name': '0.H Herbert',
-            'number': '2023-03-01-0054',
-            'released_on': '2023-03-01T00:54:27Z',
+            'number': '2024-11-23-1857',
+            'released_on': '2024-11-23T20:25:37Z',
             'github_release': 'https://github.com/CleverRaven/Cataclysm-DDA/releases/tag/0.H-RELEASE',
             'Tiles': {
                 'x64': 'https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-windows-with-graphics-and-sounds-x64-2024-11-23-1857.zip',
