@@ -13,8 +13,6 @@ import winreg
 
 from pathlib import Path
 import shutil
-import httpx
-from zipfile import ZipFile
 import subprocess
 
 from distutils.cmd import Command
