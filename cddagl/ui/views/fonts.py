@@ -8,6 +8,7 @@ import json
 import ctypes
 import shutil
 
+import yaml
 from PyQt5.QtCore import Qt, QStringListModel
 from PyQt5.QtGui import QFontDatabase, QFont
 from PyQt5.QtWidgets import (QWidget, QGridLayout, QTabWidget, QVBoxLayout, QPushButton, QLabel, QSpinBox, QRadioButton,
@@ -206,9 +207,12 @@ World, Hello!
             logger.error("字体配置文件不存在：" + font_settings_path)
             return  # 如果文件不存在，直接返回
 
-        # 读取字体配置文件
-        with open(font_settings_path, 'r', encoding='utf-8') as file:
-            self.fontsjson = json.load(file)
+        try:
+            # 读取字体配置文件
+            with open(font_settings_path, 'r', encoding='utf-8') as file:
+                self.fontsjson = json.load(file)
+        except FileNotFoundError:
+            logger.error("字体配置文件不存在：" + font_settings_path)
 
         # 更新current_font_text_edit的文本
         self.update_current_font_text_edit()
@@ -427,14 +431,16 @@ World, Hello!
         self.repo_fonts = []  # 使用 repo_fonts 替换 repo_mods 以反映内容的改变
 
         yaml_file = get_data_path('fonts.yaml')  # 修改文件名为 fonts.yaml
-
-        if os.path.isfile(yaml_file):  # 检查文件是否存在
-            with open(yaml_file, 'r', encoding='utf8') as f:  # 打开YAML文件
-                try:
-                    values = yaml.safe_load(f)  # 解析YAML文件
-                    print(values)
-                except yaml.YAMLError:  # 处理YAML解析错误
-                    pass
+        try:
+            if os.path.isfile(yaml_file):  # 检查文件是否存在
+                with open(yaml_file, 'r', encoding='utf8') as f:  # 打开YAML文件
+                    try:
+                        values = yaml.safe_load(f)  # 解析YAML文件
+                        print(values)
+                    except yaml.YAMLError:  # 处理YAML解析错误
+                        pass
+        except Exception as e:
+            logger.error(f"加载字体库时出错: {e}")
 
     def install_new(self):
         """
