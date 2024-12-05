@@ -1547,8 +1547,8 @@ class UpdateGroupBox(QGroupBox):
 
         target_regex = re.compile(
             r'cdda-windows-' +
-            re.escape(asset_graphics) + r'-' +
-            re.escape(asset_platform) + self.selected_build_type +
+            r'with-graphics' + r'-' +
+            r'x64' +
             r'b?(?P<build>[0-9\-]+)\.zip'
             )
 
@@ -3015,6 +3015,30 @@ class UpdateGroupBox(QGroupBox):
         if selected_branch == self.experimental_radio_button:
             self.find_build_warning_label.show()
 
+    def get_stable_tags(self):
+        url = cons.GITHUB_REST_API_URL + cons.CDDA_RELEASE_TAGS
+        tag_regex = re.compile(r'(refs/tags/)(cdda-|)(0\.[A-Z]-)([0-9\-]+|[a-zA-Z]+|)')
+
+
+        try:
+            tags_data = requests.get(url).json()
+        except:
+            tags_data = []
+        stable_refs = list(filter(lambda d: tag_regex.match(d['ref']), tags_data))
+        stable_tags = []
+        stable_letter = ""
+        # Reverse order to deal with the most recent first
+        for entry in reversed(stable_refs):
+            # Extract the actual tag
+            tag = re.sub(r'refs/tags/', '', entry['ref'])
+            # Get the stable version: 0.H, 0.I etc
+            tmp_letter = re.compile(r'0.[A-Z]').search(tag).group(0)
+            if tmp_letter != stable_letter:  # Only get the first unique stable you find
+                stable_letter = tmp_letter
+                stable_tags.append(tag)
+
+        return stable_tags
+
     def lb_http_finished(self):
         main_window = self.get_main_window()
 
@@ -3121,8 +3145,8 @@ class UpdateGroupBox(QGroupBox):
 
         target_regex = re.compile(
             r'cdda-windows-' +
-            re.escape(asset_graphics) + r'-' +
-            re.escape(asset_platform) + self.selected_build_type +
+            r'with-graphics' + r'-' +
+            r'x64' +
             r'b?(?P<build>[0-9\-]+)\.zip'
             )
 
@@ -3267,6 +3291,38 @@ class UpdateGroupBox(QGroupBox):
 
             builds = []
 
+            tmp_changelog = ""
+            build_regex = re.compile(r'cdda-windows-tiles' + r'(-x64|-x32)' + r'(-msvc-|-)' + r'([0-9\-]+)\.zip')
+            stable_tags = self.get_stable_tags()
+
+            last_idx = len(stable_tags) - 1
+            for tag in stable_tags:
+                url = cons.GITHUB_REST_API_URL + cons.CDDA_RELEASE_BY_TAG(tag)
+                try:
+                    release = requests.get(url).json()
+                except:
+                    continue
+
+                stable_name = re.compile(r'0.[A-Z]').search(release['tag_name']).group(0)
+                # Skip hardcoded releases
+                if stable_name in cons.STABLE_ASSETS:
+                    continue
+                if release['prerelease']:
+                    stable_name += ' release candidate'
+                    tmp_changelog += f'<h3>{stable_name}</h3> <p><a href="https://github.com/CleverRaven/Cataclysm-DDA/blob/master/data/changelog.txt">Changelog</a></p>'
+                else:
+                    tmp_changelog += f'<h3>{stable_name} {release["name"]}</h3>' + '<p>' + release['body'] + '</p>'
+                stable_assets = list(filter(lambda d: build_regex.match(d['name']), release['assets']))
+                # We simply get the first valid build
+                if isinstance(stable_assets, list) and len(stable_assets) > 1:
+                    build = {
+                        'url': stable_assets[0]['browser_download_url'],
+                        'name': stable_name,
+                        'number': tag,
+                        'date': arrow.get(stable_assets[0]['created_at']).datetime
+                    }
+                    builds.append(build)
+
             for stable_version in cons.STABLE_ASSETS:
                 version_details = cons.STABLE_ASSETS[stable_version]
 
@@ -3310,7 +3366,7 @@ class UpdateGroupBox(QGroupBox):
 
             # Populate stable changelog
 
-            self.changelog_content.setHtml(cons.STABLE_CHANGELOG)
+            self.changelog_content.setHtml(tmp_changelog + cons.STABLE_CHANGELOG)
 
             
         elif selected_branch is self.experimental_radio_button:
@@ -3499,8 +3555,8 @@ class ProgressRmTree(QTimer):
                             self.deleting = True
 
                             progress_bar = QProgressBar()
-                            progress_bar.setRange(0, self.total_files)
-                            progress_bar.setValue(0)
+                            self.scale_factor = max(0, int(self.total_copy_size.bit_length()) - 31)
+                            progress_bar.setRange(0, self.total_copy_size >> self.scale_factor)
                             self.status_bar.addWidget(progress_bar)
                             self.progress_bar = progress_bar
 

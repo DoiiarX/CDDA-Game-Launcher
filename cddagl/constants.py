@@ -17,6 +17,7 @@ GITHUB_API_VERSION = b'application/vnd.github.v3+json'
 GITHUB_XRL_REMAINING = b'X-RateLimit-Remaining'
 GITHUB_XRL_RESET = b'X-RateLimit-Reset'
 
+CDDA_RELEASE_TAGS = '/repos/CleverRaven/Cataclysm-DDA/git/refs/tags'
 CDDA_RELEASES = '/repos/CleverRaven/Cataclysm-DDA/releases'
 CDDA_RELEASE_BY_TAG = lambda tag: f'/repos/CleverRaven/Cataclysm-DDA/releases/tags/{tag}'
 CDDAGL_LATEST_RELEASE = '/repos/DoiiarX/CDDA-Game-Launcher/releases/latest'
