@@ -30,40 +30,27 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Get pip cache dir
-      id: pip-cache
-      run: |
-        echo "::set-output name=dir::$(pip cache dir)"
-    - name: pip cache
-      uses: actions/cache@v4
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
       with:
-        path: ${{ steps.pip-cache.outputs.dir }}
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-    - name: Set up Python
-      shell: bash -l {0}
-      env:
-        PYTHON_VERSION: ${{ matrix.PYTHON_VERSION }}
-        LC_ALL: C.UTF-8
-        LANG: C.UTF-8
-      run: |
-        which python
-        python --version
-        pip --version
-        pip install setuptools
-        pip install Babel
-        pip install -r requirements.txt
-        pip install PyInstaller html5lib cssselect
-    - name: Install dependencies
+        version: "latest"
+        enable-cache: true
+
+    - name: Sync dependencies with uv
       shell: bash -l {0}
       run: |
-        pip install third-party/pylzma/pylzma-0.5.0-cp39-cp39-win_amd64.whl
+        uv sync --all-extras
+        uv pip install third-party/pylzma/pylzma-0.5.0-cp39-cp39-win_amd64.whl
     - name: Run installer
       shell: bash -l {0}
       run: |
-        # Build the standalone executable
-        python setup.py create_installer
+        # Build standalone executable
+        uv run python setup.py create_installer
+    - name: Run installer
+      shell: bash -l {0}
+      run: |
+        # Build standalone executable
+        uv run python setup.py create_installer
 
     - name: Get version
       run: |
