@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-name: Bug Report
+name: Bug Report (中文)
 description: 创建一个报告以帮助改进启动器
 # title: ""
 labels: ["bug"]
