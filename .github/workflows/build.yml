@@ -39,13 +39,9 @@ jobs:
     - name: Sync dependencies with uv
       shell: bash -l {0}
       run: |
-        uv sync --all-extras
+        uv sync
         uv pip install third-party/pylzma/pylzma-0.5.0-cp39-cp39-win_amd64.whl
-    - name: Run installer
-      shell: bash -l {0}
-      run: |
-        # Build standalone executable
-        uv run python setup.py create_installer
+        uv pip install PyQt5 PyQt5-sip PyQtWebEngine
     - name: Run installer
       shell: bash -l {0}
       run: |
