@@ -3022,6 +3022,9 @@ class UpdateGroupBox(QGroupBox):
 
         try:
             tags_data = requests.get(url).json()
+            # Check if response is a list (successful), otherwise treat as error
+            if not isinstance(tags_data, list):
+                tags_data = []
         except:
             tags_data = []
         stable_refs = list(filter(lambda d: tag_regex.match(d['ref']), tags_data))
