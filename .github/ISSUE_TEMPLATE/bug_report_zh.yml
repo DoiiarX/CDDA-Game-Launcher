@@ -1,0 +1,83 @@
+# SPDX-FileCopyrightText: 2022 Gonzalo López <glopezvigliante@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+name: Bug Report
+description: 创建一个报告以帮助改进启动器
+# title: ""
+labels: ["bug"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        在提交此问题之前，请执行以下操作：
+        - 在网上搜索您的错误。这通常能更好地理解问题。
+        - 证明错误确实是启动器的错误，并提供具体的复现步骤。
+        - 搜索问题跟踪器（包括已关闭的问题）和讨论论坛。
+        - 尝试自己修复问题。保留您为修复问题所做的事情的列表。
+
+        如果完成上述所有操作后问题仍然存在，请继续填写此工单，提供*所有*请求的信息。
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 描述
+      description: 对错误的清晰和简洁的描述。
+      placeholder: 对错误的清晰和简洁的描述。
+      # value: ""
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 复现行为的步骤
+      placeholder: |
+        1. 转到 '...'
+        2. 点击 '....'
+        3. 向下滚动到 '....'
+        4. 看到错误
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behaviour
+    attributes:
+      label: 预期行为
+      description: 对您预期发生什么的清晰和简洁的描述。
+      placeholder: 对您预期发生什么的清晰和简洁的描述。
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 截图
+      description: 如果适用，添加截图以帮助解释您的问题。
+      placeholder: 如果适用，添加截图以帮助解释您的问题。
+    validations:
+      required: false
+  - type: textarea
+    id: attempted-fixes
+    attributes:
+      label: 尝试的修复
+      description: 您为修复问题所尝试的事情列表，包括搜索引擎链接。
+      placeholder: 您为修复问题所尝试的事情列表，包括搜索引擎链接。
+    validations:
+      required: false
+  - type: textarea
+    id: system-details
+    attributes:
+      label: 系统详情
+      description: 请在此处添加您的系统详细信息。
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 其他背景
+      description: 在此处添加有关问题的其他背景。
+      placeholder: 在此处添加有关问题的其他背景。
+    validations:
+      required: false
+
