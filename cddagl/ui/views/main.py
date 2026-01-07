@@ -3306,6 +3306,10 @@ class UpdateGroupBox(QGroupBox):
                 except:
                     continue
 
+                # Check if release is valid (contains tag_name)
+                if not isinstance(release, dict) or 'tag_name' not in release:
+                    continue
+
                 stable_name = re.compile(r'0.[A-Z]').search(release['tag_name']).group(0)
                 # Skip hardcoded releases
                 if stable_name in cons.STABLE_ASSETS:
