@@ -49,39 +49,22 @@ jobs:
         uv run python setup.py create_installer
 
     - name: Get version
+      id: get_version
       run: |
         $VERSION = Get-Content -Encoding UTF8 cddagl/VERSION
-        echo "VERSION=$VERSION" | Out-File -Append -Encoding UTF8 $Env:GITHUB_ENV
+        "VERSION=$VERSION" | Out-File -Append -Encoding UTF8 $Env:GITHUB_OUTPUT
 
     - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: softprops/action-gh-release@v1
       with:
-        tag_name: v${{ env.VERSION }}
-        release_name: Release v${{ env.VERSION }}
+        tag_name: v${{ steps.get_version.outputs.VERSION }}
+        name: Release v${{ steps.get_version.outputs.VERSION }}
         draft: false
         prerelease: true
-
-    - name: Upload Portable Asset
-      uses: actions/upload-release-asset@v1
+        files: |
+          ./dist/cddagl_portable_v${{ steps.get_version.outputs.VERSION }}.zip
+          ./dist/innosetup/cddagl_installer_v${{ steps.get_version.outputs.VERSION }}.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/cddagl_portable_v${{ env.VERSION }}.zip
-        asset_name: cddagl_portable_v${{ env.VERSION }}.zip
-        asset_content_type: application/zip
-
-    - name: Upload Installer Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/innosetup/cddagl_installer_v${{ env.VERSION }}.exe
-        asset_name: cddagl_installer_v${{ env.VERSION }}.exe
-        asset_content_type: application/octet-stream
 
 
