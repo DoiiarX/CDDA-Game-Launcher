@@ -1324,7 +1324,7 @@ class UpdateGroupBox(QGroupBox):
         self.refresh_warning_label = refresh_warning_label
 
         refresh_builds_button = QToolButton()
-        refresh_builds_button.clicked.connect(self.refresh_builds)
+        refresh_builds_button.clicked.connect(self.refresh_builds_clicked)
         layout.addWidget(refresh_builds_button, layout_row, 4)
         self.refresh_builds_button = refresh_builds_button
 
@@ -3019,28 +3019,48 @@ class UpdateGroupBox(QGroupBox):
         url = cons.GITHUB_REST_API_URL + cons.CDDA_RELEASE_TAGS
         tag_regex = re.compile(r'(refs/tags/)(cdda-|)(0\.[A-Z]-)([0-9\-]+|[a-zA-Z]+|)')
 
+        # Use background thread for API request to avoid blocking UI
+        api_thread = ApiRequestThread(url, check_cache=True, parent_widget=self)
+        api_thread.completed.connect(self._on_tags_received)
+        api_thread.error.connect(self._on_api_error)
 
-        try:
-            tags_data = requests.get(url).json()
-            # Check if response is a list (successful), otherwise treat as error
-            if not isinstance(tags_data, list):
-                tags_data = []
-        except:
+        # Store thread reference to prevent garbage collection
+        self.tags_thread = api_thread
+        api_thread.start()
+
+        # Return empty list immediately, actual data will come via callback
+        return []
+
+    def _on_tags_received(self, result):
+        """Handle tags received from background thread"""
+        tags_data, _ = result
+        if not isinstance(tags_data, list):
             tags_data = []
+
         stable_refs = list(filter(lambda d: tag_regex.match(d['ref']), tags_data))
         stable_tags = []
         stable_letter = ""
         # Reverse order to deal with the most recent first
         for entry in reversed(stable_refs):
-            # Extract the actual tag
             tag = re.sub(r'refs/tags/', '', entry['ref'])
-            # Get the stable version: 0.H, 0.I etc
+            # Get stable version: 0.H, 0.I etc
             tmp_letter = re.compile(r'0.[A-Z]').search(tag).group(0)
             if tmp_letter != stable_letter:  # Only get the first unique stable you find
                 stable_letter = tmp_letter
                 stable_tags.append(tag)
 
-        return stable_tags
+        # Call the original callback to continue processing
+        if hasattr(self, 'stable_tags_callback'):
+            self.stable_tags_callback(stable_tags)
+
+    def _on_api_error(self, error_msg):
+        """Handle API request error"""
+        logger.error(f'API request error: {error_msg}')
+
+    def get_stable_tags_with_callback(self, callback):
+        """Method to get stable tags with callback support"""
+        self.stable_tags_callback = callback
+        return self.get_stable_tags()
 
     def lb_http_finished(self):
         main_window = self.get_main_window()
@@ -3296,7 +3316,7 @@ class UpdateGroupBox(QGroupBox):
 
             tmp_changelog = ""
             build_regex = re.compile(r'cdda-windows-tiles' + r'(-x64|-x32)' + r'(-msvc-|-)' + r'([0-9\-]+)\.zip')
-            stable_tags = self.get_stable_tags()
+            stable_tags = self.get_stable_tags_with_callback(on_tags_received)
 
             last_idx = len(stable_tags) - 1
             for tag in stable_tags:
@@ -3382,6 +3402,14 @@ class UpdateGroupBox(QGroupBox):
             self.start_lb_request( release_asset, selected_build_type )
             self.refresh_changelog()
 
+    def refresh_builds_clicked(self):
+        """Handle refresh button click - clear cache and refresh builds"""
+        # Clear cache to force fresh data
+        self.api_cache.clear()
+
+        # Call the actual refresh method
+        self.refresh_builds()
+
     def refresh_changelog(self):
         ### "((?<![\w#])(?=[\w#])|(?<=[\w#])(?![\w#]))" is like a \b
         ### that accepts "#" as word char too.
@@ -3391,14 +3419,29 @@ class UpdateGroupBox(QGroupBox):
 
         ### Get the last 100 PR
         url = cons.CHANGELOG_URL + '100'
-        try:
-            changelog_data = requests.get(url).json()
-        except requests.ConnectionError:
-            self.changelog_content.setHtml(_('<h3>Can\'t reach changelog...</h3>'))
-            return
+
+        # Use background thread for API request to avoid blocking UI
+        api_thread = ApiRequestThread(url, check_cache=True, parent_widget=self)
+        api_thread.completed.connect(self._on_changelog_received)
+        api_thread.error.connect(self._on_api_error)
+
+        # Store thread reference
+        self.changelog_thread = api_thread
+        api_thread.start()
+
+        # Return immediately, actual processing will be done in callback
+        return
+
+    def _on_changelog_received(self, result):
+        """Handle changelog data received from background thread"""
+        changelog_data, _ = result
         changelog_html = StringIO()
 
         changelog_sorted = dict()
+
+        if not isinstance(changelog_data, dict) or 'items' not in changelog_data:
+            self.changelog_content.setHtml(_('<h3>Failed to load changelog...</h3>'))
+            return
 
         for entry in changelog_data["items"]:
             if entry["state"] == "open":
@@ -3411,7 +3454,7 @@ class UpdateGroupBox(QGroupBox):
                                         number=entry['number'],
                                         html_url=entry['html_url']
                                         )
-                                        
+
             if new_date in changelog_sorted:
                 changelog_sorted[new_date].append(new_entry)
             else:
@@ -3503,6 +3546,45 @@ class changelog_entry():
         self.node_id = node_id
         self.number = number
         self.html_url = html_url
+
+
+class ApiRequestThread(QThread):
+    """Thread for making API requests in background to avoid blocking UI"""
+    completed = pyqtSignal(object)
+    error = pyqtSignal(str)
+
+    def __init__(self, url, check_cache=False, parent_widget=None):
+        super(ApiRequestThread, self).__init__()
+        self.url = url
+        self.check_cache = check_cache
+        self.parent_widget = parent_widget
+
+    def run(self):
+        """Execute API request in background thread"""
+        # Check cache first if requested
+        if self.check_cache and self.parent_widget is not None:
+            if self.url in self.parent_widget.api_cache:
+                cached_data, cache_time = self.parent_widget.api_cache[self.url]
+                if time.time() - cache_time < self.parent_widget.cache_expire_seconds:
+                    self.completed.emit((cached_data, cache_time))
+                    return
+                else:
+                    del self.parent_widget.api_cache[self.url]
+                    release = None
+            else:
+                release = None
+
+        try:
+            response = requests.get(self.url)
+            result = response.json()
+
+            # Cache result if requested
+            if self.check_cache and self.parent_widget is not None:
+                self.parent_widget.api_cache[self.url] = (result, time.time())
+
+            self.completed.emit((result, time.time()))
+        except Exception as e:
+            self.error.emit(str(e))
 
 
 # Recursively delete an entire directory tree while showing progress in a
